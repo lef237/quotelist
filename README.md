@@ -1,0 +1,2 @@
+# quotelist-dev
+クオートリスト
