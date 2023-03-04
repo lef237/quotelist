@@ -1,24 +1,5 @@
-# README
+# QuoteList
+## サービス概要
+『QuoteList（クオートリスト）』というサービスは、「未知の書籍と出会うきっかけとして、既読した人による書籍の引用から、気になる書籍を探したいが、引用が集まっている場所がない」という問題を解決してくれる、読書が好きな人向けの引用共有サービスです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ユーザーは書籍の引用を記録することができ、Kindleの共有機能とは違って、自分以外の人の引用記録も見ることができる点が特徴です。
