@@ -3,3 +3,13 @@
 
 <div id="hello"></div>
 <div id="hey"></div>
+
+ここをハッシュにしてみる
+
+<% hello = {name: "山田", age: 25} %>
+<% world = 3333 %>
+
+<%= content_tag :div,
+  id: "hola",
+  data: hello.to_json do %>
+<% end %>
