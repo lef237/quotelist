@@ -1,0 +1,25 @@
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+
+<div id="hello"></div>
+<div id="hey"></div>
+
+ここをハッシュにしてみる<br>
+
+<% hello = {name: "山田", age: 42} %>
+<% world = {name: "レフ象"} %>
+
+一番最初のものだけ、データが受け渡される
+<div id="hola"></div>
+そのため、複数同じコンポーネントを使いたい場合には、idを変えよう
+<div id="hola2"></div>
+
+<%= content_tag :div,
+  id: "hola3",
+  data: hello.to_json do %>
+<% end %>
+
+<%= content_tag :div,
+  id: "hola4",
+  data: world.to_json do %>
+<% end %>
