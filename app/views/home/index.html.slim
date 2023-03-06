@@ -1,0 +1,20 @@
+h1
+  | Home#index
+p
+  | Find me in app/views/home/index.html.erb
+#hello
+#hey
+|  ここをハッシュにしてみる
+br
+- hello = {name: "山田", age: 42}
+- world = {name: "レフ象"}
+|  一番最初のものだけ、データが受け渡される 
+#hola
+|  そのため、複数同じコンポーネントを使いたい場合には、idを変えよう 
+#hola2
+= content_tag :div,
+-   id: "hola3",
+-   data: hello.to_json do
+= content_tag :div,
+-   id: "hola4",
+-   data: world.to_json do
