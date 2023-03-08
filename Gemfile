@@ -72,6 +72,10 @@ group :development do
   # gem "spring"
 
   gem 'html2slim'
+  gem 'rubocop-fjord', require: false
+  gem 'rubocop-rails', require: false
+  # 質問・雑談タイム後にrubocop-rspecを使うかどうか考える
+  # gem 'rubocop-rspec', require: false
 end
 
 group :test do
