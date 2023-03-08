@@ -8,3 +8,6 @@ inherit_gem:
 require:
   - rubocop-rspec
   - rubocop-capybara
+
+Rails/FilePath:
+  Enabled: false
