@@ -1,0 +1,7 @@
+#!/bin/bash
+
+bundle exec rubocop -a
+bundle exec slim-lint app/
+yarn run tsc --noEmit
+yarn eslint ./app/javascript
+yarn prettier --check ./app/javascript
