@@ -1,3 +1,11 @@
+- if user_signed_in?
+  = link_to "登録情報編集", edit_user_registration_path, class: "header__right--btn"
+  / link_toだとmethodの指定に関わらずgetが呼ばれてしまうため、button_toにしている
+  = button_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__right--btn"
+- else
+  = link_to "ログイン", new_user_session_path, class: "header__right--btn"
+  = link_to "新規登録", new_user_registration_path, class: "header__right--btn"
+
 h1
   | Home#index
 p
