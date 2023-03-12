@@ -8,7 +8,7 @@ Mount(Hello, "hello");
 Mount(Hey, "hey");
 
 // const holaNames = ["hola1", "hola2", "hola3", "hola4"];
-const number = 4;
+const number = 7; //本来は4だが、数字を多めにしても問題なく表示される
 const holaNames = Array.from(
   { length: number },
   (_, index) => `hola${index + 1}`
