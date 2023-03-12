@@ -7,7 +7,12 @@ import Hola from "./components/Hola";
 Mount(Hello, "hello");
 Mount(Hey, "hey");
 
-const holaNames = ["hola1", "hola2", "hola3", "hola4"];
+// const holaNames = ["hola1", "hola2", "hola3", "hola4"];
+const number = 4;
+const holaNames = Array.from(
+  { length: number },
+  (_, index) => `hola${index + 1}`
+);
 
 holaNames.forEach((name) => {
   Mount(Hola, name);
