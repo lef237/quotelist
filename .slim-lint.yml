@@ -2,6 +2,5 @@ linters:
   LineLength:
     max: 300
 
-  # slimでは末尾に空白スペースを入れることによって幅を調整する場合があるため、下の設定を入れた
   TrailingWhitespace:
     enabled: false
