@@ -6,7 +6,7 @@ RSpec.describe 'Top', type: :request do
   describe 'GET /terms_of_service' do
     it 'HTTP ステータス 200 を返す' do
       get '/terms_of_service'
-      expect(response).to have_http_status(404)
+      expect(response).to have_http_status(:ok)
     end
   end
 
