@@ -2,5 +2,5 @@ linters:
   LineLength:
     max: 300
 
-  # TrailingWhitespace:
-  #   enabled: false
+  TrailingWhitespace:
+    enabled: false
