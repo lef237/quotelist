@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sandbox/h1test'
   get 'terms_of_service', to: 'top#terms_of_service'
   get 'privacy_policy', to: 'top#privacy_policy'
   devise_for :users
