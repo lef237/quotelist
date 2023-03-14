@@ -4,27 +4,15 @@
 #
 # This workflow will install a prebuilt Ruby version, install dependencies, and
 # run tests and linters.
-name: "CI"
+name: "Lint"
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 jobs:
-  ci:
+  lint:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:11-alpine
-        ports:
-          - "5432:5432"
-        env:
-          POSTGRES_DB: rails_test
-          POSTGRES_USER: rails
-          POSTGRES_PASSWORD: password
-    env:
-      RAILS_ENV: test
-      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -39,15 +27,13 @@ jobs:
       - name: Install dependencies
         run: yarn
       # Add or replace any other lints here
-      - name: Lint files
-        run: bin/lint
-      # Add or replace database setup steps here
-      - name: Set up database schema
-        run: bin/rails db:schema:load
-      # Add or replace test runners here
-      - name: Run Dev
-        run: |
-          yarn build
-          yarn build:css
-      - name: Run RSpec
-        run: bin/rspec
+      - name: Rubocop
+        run: bundle exec rubocop
+      - name: Slim-Lint
+        run: bundle exec slim-lint app/
+      - name: TypeScript Check
+        run: yarn run tsc --noEmit
+      - name: ESLint
+        run: yarn eslint ./app/javascript
+      - name: Prettier
+        run: yarn prettier --check ./app/javascript
