@@ -27,5 +27,13 @@ jobs:
       - name: Install dependencies
         run: yarn
       # Add or replace any other lints here
-      - name: Lint files
-        run: bin/lint
+      - name: Rubocop
+        run: bundle exec rubocop
+      - name: Slim-Lint
+        run: bundle exec slim-lint app/
+      - name: TypeScript Check
+        run: yarn run tsc --noEmit
+      - name: ESLint
+        run: yarn eslint ./app/javascript
+      - name: Prettier
+        run: yarn prettier --check ./app/javascript
