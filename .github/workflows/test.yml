@@ -11,7 +11,7 @@ on:
   pull_request:
     branches: [ "main" ]
 jobs:
-  ci:
+  test:
     runs-on: ubuntu-latest
     services:
       postgres:
