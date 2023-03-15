@@ -1,4 +1,3 @@
-// NodeListからdivのidsを取得している
 const getDivIds = (divElements: NodeListOf<HTMLDivElement>) => {
   const divIds = [];
   for (let i = 0; i < divElements.length; i++) {
@@ -9,7 +8,6 @@ const getDivIds = (divElements: NodeListOf<HTMLDivElement>) => {
   return divIds;
 };
 
-// 特定の単語が先頭にある、divのIDの末尾の数字の中で、最大値を取得する
 const getMaxId = (prefix: string, ids: string[]) => {
   const filteredIds = ids
     .filter(function (id) {
