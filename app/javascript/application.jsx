@@ -5,7 +5,14 @@ import Hello from "./components/Hello";
 import Hey from "./components/Hey";
 import Hola from "./components/Hola";
 
-const getMaxIdStartingWithPrefix = (prefix, ids) => {
+Mount(Hello, "hello");
+Mount(Hey, "hey");
+
+// div要素のNodeListを取得
+const divElements = document.querySelectorAll('div');
+
+// 特定の単語が先頭にある、divのIDの末尾の数字の中で、最大値を取得する
+const getMaxId = (prefix, ids) => {
   const filteredIds = ids.filter(function(id) {
     return id.startsWith(prefix);
   }).map(function(id) {
@@ -14,38 +21,17 @@ const getMaxIdStartingWithPrefix = (prefix, ids) => {
   return Math.max.apply(Math, filteredIds);
 }
 
-// すべてのdiv要素を取得
-const divElements = document.getElementsByTagName("div");
-
-// console.log(divElements)
-
-// すべてのdiv要素からIDを取得
-const divIds = [];
-for (let i = 0; i < divElements.length; i++) {
-  if (divElements[i].id) {
-    divIds.push(divElements[i].id);
+// NodeListからdivのidsを取得している
+const getDivIds = (divElements) => {
+  const divIds = [];
+  for (let i = 0; i < divElements.length; i++) {
+    if (divElements[i].id) {
+      divIds.push(divElements[i].id);
+    }
   }
+  return divIds;
 }
 
-// 取得したIDの配列をコンソールに出力
-console.log(divIds);
+const divIds = getDivIds(divElements);
 
-const holaMaxId = getMaxIdStartingWithPrefix('hola', divIds)
-
-console.log(holaMaxId)
-
-
-// const holaIds = divIds.filter(function(id) {
-//   return id.startsWith('hola'); // 'hello'で始まるもののみをフィルター
-// }).map(function(id) {
-//   return parseInt(id.replace('hola', '')); // 'hello'を削除し、数値に変換
-// });
-
-// const maxId = Math.max.apply(Math, holaIds); // 最大値を取得
-
-// console.log(holaIds); // [1, 2, 3, 42]
-// console.log(maxId); // 42
-
-Mount(Hello, "hello");
-Mount(Hey, "hey");
-MountComponents(Hola, "hola");
+MountComponents(Hola, "hola", getMaxId('hola', divIds));

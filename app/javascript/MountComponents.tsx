@@ -5,7 +5,7 @@ import Mount from "./Mount";
 const MountComponents = (
   component: unknown,
   divName: string,
-  numberOfComponents = 30
+  numberOfComponents: number
 ) => {
   const names = Array.from(
     { length: numberOfComponents },
