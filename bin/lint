@@ -2,6 +2,7 @@
 
 bundle exec rubocop
 bundle exec slim-lint app/
+bundle exec erblint --lint-all
 yarn run tsc --noEmit
 yarn eslint ./app/javascript
 yarn prettier --check ./app/javascript

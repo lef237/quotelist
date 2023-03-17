@@ -70,6 +70,13 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     bcrypt (3.1.18)
+    better_html (2.0.1)
+      actionview (>= 6.0)
+      activesupport (>= 6.0)
+      ast (~> 2.0)
+      erubi (~> 1.4)
+      parser (>= 2.4)
+      smart_properties
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -100,6 +107,13 @@ GEM
     diff-lcs (1.5.0)
     dockerfile-rails (1.2.5)
       rails
+    erb_lint (0.3.1)
+      activesupport
+      better_html (>= 2.0.1)
+      parser (>= 2.7.1.4)
+      rainbow
+      rubocop
+      smart_properties
     erubi (1.12.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
@@ -255,6 +269,7 @@ GEM
     slim_lint (0.24.0)
       rubocop (>= 1.0, < 2.0)
       slim (>= 3.0, < 6.0)
+    smart_properties (1.17.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -304,6 +319,7 @@ DEPENDENCIES
   debug
   devise
   dockerfile-rails (>= 1.2)
+  erb_lint
   factory_bot_rails
   html2slim
   jbuilder

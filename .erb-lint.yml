@@ -1,0 +1,9 @@
+---
+glob: "**/*.{html,text,js}{+*,}.erb"
+exclude:
+  - '**/vendor/**/*'
+  - '**/node_modules/**/*'
+linters:
+  # generatorが自動生成したerbがこの規則に従っていないことが多いので、検証対象から外す
+  SelfClosingTag:
+    enabled: false

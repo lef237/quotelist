@@ -31,6 +31,8 @@ jobs:
         run: bundle exec rubocop
       - name: Slim-Lint
         run: bundle exec slim-lint app/
+      - name: ERB-Lint
+        run: bundle exec erblint --lint-all
       - name: TypeScript Check
         run: yarn run tsc --noEmit
       - name: ESLint
