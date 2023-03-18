@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :quote do
     user { nil }
     book { nil }
-    sentence { "MyText" }
+    sentence { 'MyText' }
     page_number { 1 }
     source_quote { nil }
   end

@@ -1,7 +1,7 @@
 = form_with(model: @quote) do |form|
   - if @quote.errors.any?
     div style="color: red"
-      h2 = "#{pluralize(@quote.errors.count, "error")} prohibited this quote from being saved:"
+      h2 = "#{pluralize(@quote.errors.count, 'error')} prohibited this quote from being saved:"
       ul
         - @quote.errors.each do |error|
           li = error.full_message
