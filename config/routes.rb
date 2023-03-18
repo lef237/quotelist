@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :quotes
   resources :books
   get 'terms_of_service', to: 'top#terms_of_service'
   get 'privacy_policy', to: 'top#privacy_policy'
