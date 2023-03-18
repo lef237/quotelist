@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_17_042345) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_17_134050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_042345) do
     t.string "information_url", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "quotes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.text "sentence"
+    t.integer "page_number"
+    t.bigint "source_quote_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_quotes_on_book_id"
+    t.index ["source_quote_id"], name: "index_quotes_on_source_quote_id"
+    t.index ["user_id"], name: "index_quotes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,4 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_042345) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "quotes", "books"
+  add_foreign_key "quotes", "quotes", column: "source_quote_id"
+  add_foreign_key "quotes", "users"
 end

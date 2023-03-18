@@ -1,0 +1,11 @@
+p style="color: green" = notice
+
+h1 Quotes
+
+#quotes
+  - @quotes.each do |quote|
+    == render quote
+    p
+      = link_to "Show this quote", quote
+
+= link_to "New quote", new_quote_path
