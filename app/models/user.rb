@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :quotes
   has_one_attached :avatar
   validate :validate_avatar
+  before_create :default_avatar
 
   private
 
@@ -23,5 +24,11 @@ class User < ApplicationRecord
 
   def image?
     avatar.content_type.in?(%("image/jpeg image/jpg image/png"))
+  end
+
+  def default_avatar
+    if !self.avatar.attached?
+      self.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default.png')), filename: 'default.png', content_type: 'image/png')
+    end
   end
 end
