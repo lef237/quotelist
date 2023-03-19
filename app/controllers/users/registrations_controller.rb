@@ -22,7 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     super
-    return unless account_update_params[:avatar].present?
+    return if account_update_params[:avatar].blank?
 
     resource.avatar.attach(account_update_params[:avatar])
   end
