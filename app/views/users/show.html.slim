@@ -1,6 +1,8 @@
-h1 Users#id
+h1 Users#show
 p Find me in app/views/users/show.html.slim
 
 p MyID: #{@user.id}
 p MyName: #{@user.name}
 p MyPage: #{@user.profile_url}
+
+= image_tag @user.avatar.variant(resize_to_fill: [200, 200]) if @user.avatar.attached?

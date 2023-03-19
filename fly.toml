@@ -1,4 +1,4 @@
-# fly.toml file generated for quotelist on 2023-03-15T01:22:00+09:00
+# fly.toml file generated for quotelist on 2023-03-19T22:35:45+09:00
 
 app = "quotelist"
 kill_signal = "SIGINT"

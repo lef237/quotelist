@@ -36,6 +36,7 @@ class BooksController < ApplicationController
 
   # PATCH/PUT /books/1 or /books/1.json
   def update
+    @book.avatar.attach(book_params[:avatar]) if book_params[:avatar].present?
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to book_url(@book), notice: 'Book was successfully updated.' }
@@ -66,6 +67,6 @@ class BooksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def book_params
-    params.require(:book).permit(:title, :author, :information_url)
+    params.require(:book).permit(:title, :author, :information_url, :avatar)
   end
 end
