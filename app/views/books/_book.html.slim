@@ -1,7 +1,8 @@
 div id="#{dom_id book}"
   p
     strong Image:
-    =< image_tag book.avatar if book.avatar.attached?
+    / [200, (200 * Math.sqrt(2)).round] でも良い。一般的な本のサイズは横＊ルート2
+    =< image_tag book.avatar.variant(resize_and_pad: [200, 283]) if book.avatar.attached?
   p
     strong Title:
     =< book.title
