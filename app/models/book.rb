@@ -10,6 +10,7 @@ class Book < ApplicationRecord
   # アバター画像のバリデーション内容
   def validate_avatar
     return unless avatar.attached?
+
     # 画像サイズの制限
     if avatar.blob.byte_size > 1.megabytes
       # エラーメッセージはi18nから取得
