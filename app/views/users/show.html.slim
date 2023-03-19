@@ -4,3 +4,5 @@ p Find me in app/views/users/show.html.slim
 p MyID: #{@user.id}
 p MyName: #{@user.name}
 p MyPage: #{@user.profile_url}
+
+= image_tag @user.avatar if @user.avatar.attached?
