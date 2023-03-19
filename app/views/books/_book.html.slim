@@ -1,5 +1,8 @@
 div id="#{dom_id book}"
   p
+    strong Image:
+    =< image_tag book.avatar if book.avatar.attached?
+  p
     strong Title:
     =< book.title
   p
