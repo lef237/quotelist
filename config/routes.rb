@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/show'
+  resources :users, only: [:show]
   resources :quotes
   resources :books
   get 'terms_of_service', to: 'top#terms_of_service'
