@@ -23,8 +23,8 @@ class Book < ApplicationRecord
   end
 
   def default_avatar
-    if !self.avatar.attached?
-      self.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default.png')), filename: 'default.png', content_type: 'image/png')
-    end
+    return if avatar.attached?
+
+    avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default.png')), filename: 'default.png', content_type: 'image/png')
   end
 end
