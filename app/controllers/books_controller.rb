@@ -5,7 +5,7 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.all
+    @books = Book.with_attached_avatar
   end
 
   # GET /books/1 or /books/1.json
