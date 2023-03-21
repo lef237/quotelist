@@ -3,6 +3,7 @@
 class QuotesController < ApplicationController
   before_action :authenticate_user!, only: %i[new edit create update destroy]
   before_action :set_quote, only: %i[show edit update destroy]
+  before_action :verify_quote_edit_privileges, only: %i[edit update destroy]
 
   # GET /quotes or /quotes.json
   def index
@@ -68,5 +69,11 @@ class QuotesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def quote_params
     params.require(:quote).permit(:user_id, :book_id, :sentence, :page_number, :source_quote_id)
+  end
+
+  def verify_quote_edit_privileges
+    return unless @quote.user != current_user
+
+    redirect_to root_path, alert: 'You are not authorized to edit this quote.'
   end
 end
