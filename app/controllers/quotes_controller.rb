@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class QuotesController < ApplicationController
+  before_action :authenticate_user!, only: %i[new edit create update destroy]
   before_action :set_quote, only: %i[show edit update destroy]
 
   # GET /quotes or /quotes.json
