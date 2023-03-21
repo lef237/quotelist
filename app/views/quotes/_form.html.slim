@@ -7,12 +7,7 @@
           li = error.full_message
 
   div
-    = form.label :user_id, style: "display: block"
-    = form.text_field :user_id
-
-  div
-    = form.label :book_id, style: "display: block"
-    = form.text_field :book_id
+    = form.hidden_field :book_id, value: params[:book_id] || @quote.book_id
 
   div
     = form.label :sentence, style: "display: block"
@@ -22,6 +17,8 @@
     = form.label :page_number, style: "display: block"
     = form.number_field :page_number
 
+  / Coquoteボタン実装時にはhidden_fieldにする必要がある
+  / おそらく「form.hidden_field :source_quote_id, value: @quote.id」みたいな感じなるはず
   div
     = form.label :source_quote_id, style: "display: block"
     = form.text_field :source_quote_id

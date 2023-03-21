@@ -2,6 +2,7 @@
 
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
+  before_action :require_login, only: %i[edit create update destroy]
 
   # GET /books or /books.json
   def index
@@ -51,11 +52,13 @@ class BooksController < ApplicationController
   # DELETE /books/1 or /books/1.json
   def destroy
     @book.destroy
-
     respond_to do |format|
       format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
       format.json { head :no_content }
     end
+  rescue ActiveRecord::DeleteRestrictionError
+    flash[:notice] = 'この書籍には既に引用がありますので削除することは出来ません。'
+    redirect_to books_url
   end
 
   private
@@ -68,5 +71,11 @@ class BooksController < ApplicationController
   # Only allow a list of trusted parameters through.
   def book_params
     params.require(:book).permit(:title, :author, :information_url, :avatar)
+  end
+
+  def require_login
+    return if current_user
+
+    redirect_to root_path, alert: 'You are not authorized to edit this book.'
   end
 end

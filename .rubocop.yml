@@ -11,6 +11,3 @@ require:
 
 Rails/FilePath:
   Enabled: false
-
-Rails/HasManyOrHasOneDependent:
-  Enabled: false
