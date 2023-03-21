@@ -6,13 +6,6 @@
         - @quote.errors.each do |error|
           li = error.full_message
 
-  / div
-  /   = form.label :user_id, style: "display: block"
-  /   = form.text_field :user_id
-
-  / div
-  /   = form.label :book_id, style: "display: block"
-  /   = form.text_field :book_id
   div
     = form.hidden_field :book_id, value: params[:book_id] || @quote.book_id
 

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # 後で引用一覧を表示させる（index表示）
+  # 後でTOP画面（root画面）に引用一覧を表示させる（index表示）
   get 'users/show/:id', to: 'users#show', as: 'user'
   resources :quotes
   resources :books do
