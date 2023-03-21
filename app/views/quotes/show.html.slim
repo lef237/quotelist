@@ -2,9 +2,9 @@ p style="color: green" = notice
 
 == render @quote
 
+- if @quote.user == current_user
+  div
+    = link_to "Edit this quote", edit_quote_path(@quote)
+    = button_to "Destroy this quote", @quote, method: :delete
 div
-  => link_to "Edit this quote", edit_quote_path(@quote)
-  '|
-  =< link_to "Back to quotes", quotes_path
-
-  = button_to "Destroy this quote", @quote, method: :delete
+  = link_to "Back to quotes", quotes_path
