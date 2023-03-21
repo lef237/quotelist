@@ -2,6 +2,7 @@
 
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
+  before_action :require_login, only: %i[edit create update destroy]
 
   # GET /books or /books.json
   def index
@@ -72,5 +73,11 @@ class BooksController < ApplicationController
   # Only allow a list of trusted parameters through.
   def book_params
     params.require(:book).permit(:title, :author, :information_url, :avatar)
+  end
+
+  def require_login
+    unless current_user
+      redirect_to root_path, alert: 'You are not authorized to edit this book.'
+    end
   end
 end
