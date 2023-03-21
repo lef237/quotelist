@@ -51,16 +51,14 @@ class BooksController < ApplicationController
 
   # DELETE /books/1 or /books/1.json
   def destroy
-    begin
-      @book.destroy
-      respond_to do |format|
-        format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
-        format.json { head :no_content }
-      end
-    rescue ActiveRecord::DeleteRestrictionError => e
-      flash[:notice] = "この書籍には既に引用がありますので削除することは出来ません。"
-      redirect_to books_url
+    @book.destroy
+    respond_to do |format|
+      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
+      format.json { head :no_content }
     end
+  rescue ActiveRecord::DeleteRestrictionError
+    flash[:notice] = 'この書籍には既に引用がありますので削除することは出来ません。'
+    redirect_to books_url
   end
 
   private
@@ -76,8 +74,8 @@ class BooksController < ApplicationController
   end
 
   def require_login
-    unless current_user
-      redirect_to root_path, alert: 'You are not authorized to edit this book.'
-    end
+    return if current_user
+
+    redirect_to root_path, alert: 'You are not authorized to edit this book.'
   end
 end

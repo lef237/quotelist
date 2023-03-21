@@ -53,16 +53,14 @@ class QuotesController < ApplicationController
 
   # DELETE /quotes/1 or /quotes/1.json
   def destroy
-    begin
-      @quote.destroy
-      respond_to do |format|
-        format.html { redirect_to quotes_url, notice: 'Quote was successfully destroyed.' }
-        format.json { head :no_content }
-      end
-    rescue ActiveRecord::DeleteRestrictionError => e
-      flash[:notice] = "この引用はCoquoteされていますので削除することは出来ません。"
-      redirect_to quotes_url
+    @quote.destroy
+    respond_to do |format|
+      format.html { redirect_to quotes_url, notice: 'Quote was successfully destroyed.' }
+      format.json { head :no_content }
     end
+  rescue ActiveRecord::DeleteRestrictionError
+    flash[:notice] = 'この引用はCoquoteされていますので削除することは出来ません。'
+    redirect_to quotes_url
   end
 
   private
