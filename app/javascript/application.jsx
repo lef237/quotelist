@@ -1,3 +1,7 @@
+// Entry point for the build script in your package.json
+import "@hotwired/turbo-rails";
+import "./controllers";
+
 import Mount from "./Mount";
 import MountComponents from "./MountComponents";
 import { getDivIds, getMaxId } from "./divUtil";
