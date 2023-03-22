@@ -5,6 +5,6 @@ p style="color: green" = notice
 - if @quote.user == current_user
   div
     = link_to "Edit this quote", edit_quote_path(@quote)
-    = button_to "Destroy this quote", @quote, method: :delete
+    = button_to "Destroy this quote", @quote, method: :delete, form: { data: { turbo_confirm: "削除してよろしいですか？" } }
 div
   = link_to "Back to quotes", quotes_path
