@@ -5,4 +5,5 @@ p MyID: #{@user.id}
 p MyName: #{@user.name}
 p MyPage: #{@user.profile_url}
 
-= image_tag @user.avatar.variant(resize_to_fill: [200, 200]) if @user.avatar.attached?
+/ 後でCSSで調整する必要がある。object-fitのfillとか
+= image_tag @user.avatar.variant(resize_to_fit: [500, 500]) if @user.avatar.attached?
