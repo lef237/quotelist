@@ -1,8 +1,9 @@
 div id="#{dom_id book}"
   p
     strong Image:
-    / [200, (200 * Math.sqrt(2)).round] でも良い。一般的な本のサイズは横＊ルート2
-    =< image_tag book.avatar.variant(resize_and_pad: [200, 283]) if book.avatar.attached?
+    / 一般的な本のサイズは横＊ルート2。本の縦横比はCSSのほうで調整する。object-fit
+    / resize_to_limitを使うと、長い方の幅を300に合わせてくれるので、CSSで扱いやすく、縦横比も元のままで、なおかつ余計な空白も入らない。小さい画像の場合に、幅に合わせて拡大してくれるresize_to_fitのほうが良い気もするが、CSSで調整すれば良さそう。
+    =< image_tag book.avatar.variant(resize_to_limit: [700, 700]) if book.avatar.attached?
   p
     strong Title:
     =< book.title
