@@ -10,7 +10,12 @@ class BooksController < ApplicationController
   end
 
   # GET /books/1 or /books/1.json
-  def show; end
+  def show
+    @quotes = Quote.where(book_id: params[:id])
+    return unless @quotes.empty?
+
+    @message = 'まだ引用はありません。'
+  end
 
   # GET /books/new
   def new
