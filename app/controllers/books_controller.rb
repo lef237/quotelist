@@ -11,7 +11,13 @@ class BooksController < ApplicationController
 
   # GET /books/1 or /books/1.json
   def show
-    @quotes = Quote.where(book_id: params[:id])
+    sort = params[:sort]
+    if sort == "random"
+      @quotes = Quote.where(book_id: params[:id]).order("RANDOM()")
+    else
+      @quotes = Quote.where(book_id: params[:id]).order(created_at: :desc)
+    end
+
     return unless @quotes.empty?
 
     @message = 'まだ引用はありません。'

@@ -8,6 +8,8 @@ p MyPage: #{@user.profile_url}
 / 後でCSSで調整する必要がある。object-fitのfillとか
 = image_tag @user.avatar.variant(resize_to_fit: [500, 500]) if @user.avatar.attached?
 
+= link_to 'ランダム表示', user_path(sort: 'random')
+
 h1 Quotes
 
 #quotes
