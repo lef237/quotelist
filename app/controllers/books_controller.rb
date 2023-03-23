@@ -13,9 +13,9 @@ class BooksController < ApplicationController
   # 書籍ごとの引用一覧を表示させる
   def show
     @quotes = Quote.where(book_id: params[:id])
-    if @quotes.empty?
-      @message = "まだ引用はありません。"
-    end
+    return unless @quotes.empty?
+
+    @message = 'まだ引用はありません。'
   end
 
   # GET /books/new

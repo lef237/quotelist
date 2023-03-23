@@ -3,8 +3,8 @@
 class HomeController < ApplicationController
   def index
     @quotes = Quote.all
-    if @quotes.empty?
-      @message = "まだ引用はありません。"
-    end
+    return unless @quotes.empty?
+
+    @message = 'まだ引用はありません。'
   end
 end
