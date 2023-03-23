@@ -11,3 +11,14 @@ div
   = link_to "Back to books", books_path
 
 = link_to 'New Quote', new_book_quote_path(@book)
+
+h1 Quotes
+
+#quotes
+  - if @message.present?
+    p = @message
+  - else
+    - @quotes.each do |quote|
+      == render quote
+      p
+        = link_to "Show this quote", quote

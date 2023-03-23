@@ -10,7 +10,13 @@ class BooksController < ApplicationController
   end
 
   # GET /books/1 or /books/1.json
-  def show; end
+  # 書籍ごとの引用一覧を表示させる
+  def show
+    @quotes = Quote.where(book_id: params[:id])
+    if @quotes.empty?
+      @message = "まだ引用はありません。"
+    end
+  end
 
   # GET /books/new
   def new

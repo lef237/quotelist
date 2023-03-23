@@ -30,3 +30,14 @@ br
 
 = link_to '利用規約', terms_of_service_path
 = link_to 'プライバシーポリシー', privacy_policy_path
+
+h1 Quotes
+
+#quotes
+  - if @message.present?
+    p = @message
+  - else
+    - @quotes.each do |quote|
+      == render quote
+      p
+        = link_to "Show this quote", quote

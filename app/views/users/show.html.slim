@@ -7,3 +7,14 @@ p MyPage: #{@user.profile_url}
 
 / 後でCSSで調整する必要がある。object-fitのfillとか
 = image_tag @user.avatar.variant(resize_to_fit: [500, 500]) if @user.avatar.attached?
+
+h1 Quotes
+
+#quotes
+  - if @message.present?
+    p = @message
+  - else
+    - @quotes.each do |quote|
+      == render quote
+      p
+        = link_to "Show this quote", quote
