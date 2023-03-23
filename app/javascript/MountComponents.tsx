@@ -5,14 +5,8 @@ import Mount from "./Mount";
 const MountComponents = (
   component: unknown,
   divName: string,
-  divElements:  NodeListOf<HTMLDivElement>
+  divElements: NodeListOf<HTMLDivElement>
 ) => {
-  // const names = Array.from(
-  //   { length: numberOfComponents },
-  //   (_, index) => `${divName}${index + 1}`
-  // );
-  console.log(divElements)
-
   const elements = [];
 
   for (let i = 0; i < divElements.length; i++) {
@@ -21,11 +15,7 @@ const MountComponents = (
     }
   }
 
-  console.log(elements);
-
   const divNames = Array.from(elements).map((div) => div.id);
-
-  console.log(divNames)
 
   divNames.forEach((name) => {
     Mount(component, name);
