@@ -5,14 +5,19 @@ import Mount from "./Mount";
 const MountComponents = (
   component: unknown,
   divName: string,
-  numberOfComponents: number
+  divElements: NodeListOf<HTMLDivElement>
 ) => {
-  const names = Array.from(
-    { length: numberOfComponents },
-    (_, index) => `${divName}${index + 1}`
-  );
+  const elements = [];
 
-  names.forEach((name) => {
+  for (let i = 0; i < divElements.length; i++) {
+    if (divElements[i].id.includes(divName)) {
+      elements.push(divElements[i]);
+    }
+  }
+
+  const divNames = Array.from(elements).map((div) => div.id);
+
+  divNames.forEach((name) => {
     Mount(component, name);
   });
 };
