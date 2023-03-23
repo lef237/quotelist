@@ -3,7 +3,13 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @quotes = Quote.where(user_id: params[:id])
+    sort = params[:sort]
+    @quotes = if sort == 'random'
+                Quote.where(user_id: params[:id]).order('RANDOM()')
+              else
+                Quote.where(user_id: params[:id]).order(created_at: :desc)
+              end
+
     return unless @quotes.empty?
 
     @message = 'まだ引用はありません。'

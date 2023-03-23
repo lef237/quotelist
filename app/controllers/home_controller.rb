@@ -2,7 +2,13 @@
 
 class HomeController < ApplicationController
   def index
-    @quotes = Quote.all
+    sort = params[:sort]
+    @quotes = if sort == 'random'
+                Quote.order('RANDOM()')
+              else
+                Quote.all.order(created_at: :desc)
+              end
+
     return unless @quotes.empty?
 
     @message = 'まだ引用はありません。'
