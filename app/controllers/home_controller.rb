@@ -3,11 +3,11 @@
 class HomeController < ApplicationController
   def index
     sort = params[:sort]
-    if sort == "random"
-      @quotes = Quote.order("RANDOM()")
-    else
-      @quotes = Quote.all.order(created_at: :desc)
-    end
+    @quotes = if sort == 'random'
+                Quote.order('RANDOM()')
+              else
+                Quote.all.order(created_at: :desc)
+              end
 
     return unless @quotes.empty?
 

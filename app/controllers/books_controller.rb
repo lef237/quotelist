@@ -12,11 +12,11 @@ class BooksController < ApplicationController
   # GET /books/1 or /books/1.json
   def show
     sort = params[:sort]
-    if sort == "random"
-      @quotes = Quote.where(book_id: params[:id]).order("RANDOM()")
-    else
-      @quotes = Quote.where(book_id: params[:id]).order(created_at: :desc)
-    end
+    @quotes = if sort == 'random'
+                Quote.where(book_id: params[:id]).order('RANDOM()')
+              else
+                Quote.where(book_id: params[:id]).order(created_at: :desc)
+              end
 
     return unless @quotes.empty?
 
