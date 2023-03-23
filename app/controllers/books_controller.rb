@@ -6,7 +6,14 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.with_attached_avatar
+    keyword = params[:keyword]
+    if keyword
+      @books = Book.where('author LIKE ? OR title LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%").order(created_at: :desc).with_attached_avatar
+      @empty_message = "検索ワード「#{params[:keyword]}」に合致する書籍や著者は登録されていません。"
+    else
+      @books = Book.order(created_at: :desc).with_attached_avatar
+      @empty_message = 'まだ書籍は登録されていません。'
+    end
   end
 
   # GET /books/1 or /books/1.json

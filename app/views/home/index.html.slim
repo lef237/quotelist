@@ -36,6 +36,10 @@ br
 = link_to 'ランダム表示', root_path(sort: 'random')
 / = link_to '人気順', root_path(sort: 'popular')
 
+= form_with url: books_path, method: :get, local: true do |f|
+  = f.text_field :keyword, placeholder: '著者名 or 書籍名'
+  = f.submit "検索"
+
 h1 Quotes
 
 #quotes
