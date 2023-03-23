@@ -10,8 +10,9 @@ import Hey from "./components/Hey";
 import Hola from "./components/Hola";
 
 const divElements = document.querySelectorAll("div");
-const divIds = getDivIds(divElements);
+// console.log(divElements)
+// const divIds = getDivIds(divElements);
 
-Mount(Hello, "hello");
-Mount(Hey, "hey");
-MountComponents(Hola, "hola", getMaxId("hola", divIds));
+MountComponents(Hello, "hello", divElements);
+MountComponents(Hey, "hey", divElements);
+MountComponents(Hola, "hola", divElements);
