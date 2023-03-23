@@ -9,11 +9,11 @@ class BooksController < ApplicationController
     keyword = params[:keyword]
     # 先に著者名を調べてからタイトルを調べる。もし著者名がある場合には、そこでreturnする？
     if keyword
-      @books = Book.where("author LIKE ? OR title LIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%").order(created_at: :desc).with_attached_avatar
+      @books = Book.where('author LIKE ? OR title LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%").order(created_at: :desc).with_attached_avatar
       @empty_message = "検索ワード「#{params[:keyword]}」に合致する書籍や著者は登録されていません。"
-    elsif
+    else
       @books = Book.order(created_at: :desc).with_attached_avatar
-      @empty_message = "まだ書籍は登録されていません。"
+      @empty_message = 'まだ書籍は登録されていません。'
     end
   end
 
