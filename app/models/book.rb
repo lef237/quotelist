@@ -5,6 +5,7 @@ class Book < ApplicationRecord
   has_one_attached :avatar
   validate :validate_avatar
   before_create :default_avatar
+  scope :search, -> (keyword) { where('author LIKE ? OR title LIKE ?', "%#{keyword}%", "%#{keyword}%").order(created_at: :desc) }
 
   private
 
