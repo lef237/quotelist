@@ -46,8 +46,10 @@ h1 Quotes
   - if @message.present?
     p = @message
   - else
-    - @quotes.each do |quote|
+    / 本来はeach_with_indexで大丈夫だが、上記のhola1~4とかぶっているので、each.with_indexを使ってhola33からスタートさせている
+    - @quotes.each.with_index(33) do |quote, index|
       == render quote
+      = content_tag :div, id: "hola#{index}", data: { name: '砂糖', age: 64 }.to_json do
       p
         = link_to "Show this quote", quote
     = paginate @quotes

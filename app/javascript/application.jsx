@@ -1,6 +1,6 @@
 // Entry point for the build script in your package.json
-import "@hotwired/turbo-rails";
-import "./controllers";
+// import "@hotwired/turbo-rails";
+// import "./controllers";
 
 import MountComponents from "./MountComponents";
 import Hello from "./components/Hello";

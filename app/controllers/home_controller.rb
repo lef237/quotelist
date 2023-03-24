@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     @quotes = if sort == 'random'
                 Quote.order('RANDOM()').page(params[:page])
               else
-                Quote.all.order(created_at: :desc).page(params[:page])
+                Quote.all.order(created_at: :desc).page(params[:page]).per(2)
               end
 
     return unless @quotes.empty?
