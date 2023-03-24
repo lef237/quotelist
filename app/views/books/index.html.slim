@@ -8,6 +8,7 @@ h1 Books
       == render book
       p
         = link_to "Show this book", book
+    = paginate @books
   - else
     = @empty_message
 

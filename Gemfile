@@ -54,6 +54,7 @@ gem 'bootsnap', require: false
 gem 'image_processing', '~> 1.2'
 
 gem 'devise'
+gem 'kaminari'
 gem 'slim-rails'
 
 group :development, :test do

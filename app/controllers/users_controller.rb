@@ -5,9 +5,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     sort = params[:sort]
     @quotes = if sort == 'random'
-                Quote.where(user_id: params[:id]).order('RANDOM()')
+                Quote.where(user_id: params[:id]).order('RANDOM()').page(params[:page]).per(10)
               else
-                Quote.where(user_id: params[:id]).order(created_at: :desc)
+                Quote.where(user_id: params[:id]).order(created_at: :desc).page(params[:page]).per(10)
               end
 
     return unless @quotes.empty?
