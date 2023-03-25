@@ -56,12 +56,12 @@ class QuotesController < ApplicationController
   def destroy
     @quote.destroy
     respond_to do |format|
-      format.html { redirect_to quotes_url, notice: 'Quote was successfully destroyed.' }
+      format.html { redirect_to book_url(@quote.book_id), notice: 'Quote was successfully destroyed.' }
       format.json { head :no_content }
     end
   rescue ActiveRecord::DeleteRestrictionError
     flash[:notice] = 'この引用はCoquoteされていますので削除することは出来ません。'
-    redirect_to quotes_url
+    redirect_to book_url(@quote.book_id)
   end
 
   private
