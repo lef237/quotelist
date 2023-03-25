@@ -52,6 +52,7 @@ class QuotesController < ApplicationController
   end
 
   # DELETE /quotes/1 or /quotes/1.json
+  # 書籍ページに戻るようにする
   def destroy
     @quote.destroy
     respond_to do |format|
