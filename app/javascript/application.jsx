@@ -3,7 +3,6 @@ import "@hotwired/turbo-rails";
 import "./controllers";
 import { Turbo } from "@hotwired/turbo-rails";
 
-// ReactとHotwireを同時に使えるようにするため、TurboDrive（TruboLinks）の機能だけを無効にしている
 Turbo.session.drive = false;
 
 import MountComponents from "./MountComponents";
