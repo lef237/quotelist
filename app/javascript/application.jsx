@@ -12,6 +12,7 @@ import Hola from "./components/Hola";
 import QuotesData from "./components/QuotesData";
 import QuotesCount from "./components/QuotesCount";
 import QuotePost from "./components/QuotePost";
+import QuoteDelete from "./components/QuoteDelete";
 
 const divElements = document.querySelectorAll("div");
 
@@ -23,3 +24,4 @@ MountComponents(Hello, "holahola", divElements);
 MountComponents(QuotesData, "quotesdata", divElements);
 MountComponents(QuotesCount, "quotescount", divElements);
 MountComponents(QuotePost, "quotepost", divElements);
+MountComponents(QuoteDelete, "quotedelete", divElements);

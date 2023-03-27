@@ -12,8 +12,9 @@ h1 ReactQuotesData
 h1 Quotes
 
 #quotes
-  - @quotes.each do |quote|
+  - @quotes.each_with_index do |quote, index|
     == render quote
+    = content_tag :div, id: "quotedelete#{index}", data: { user_id: quote.user_id }.to_json do
     p
       = link_to "Show this quote", quote
   = paginate @quotes
