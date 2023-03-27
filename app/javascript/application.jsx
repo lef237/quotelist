@@ -11,6 +11,7 @@ import Hey from "./components/Hey";
 import Hola from "./components/Hola";
 import QuotesData from "./components/QuotesData";
 import QuotesCount from "./components/QuotesCount";
+import QuotePost from "./components/QuotePost";
 
 const divElements = document.querySelectorAll("div");
 
@@ -21,3 +22,4 @@ MountComponents(Hola, "hola", divElements);
 MountComponents(Hello, "holahola", divElements);
 MountComponents(QuotesData, "quotesdata", divElements);
 MountComponents(QuotesCount, "quotescount", divElements);
+MountComponents(QuotePost, "quotepost", divElements);
