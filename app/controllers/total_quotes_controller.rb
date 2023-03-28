@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TotalQuotesController < ApplicationController
   def index
     @quotes = Quote.all
