@@ -6,8 +6,6 @@ interface Quote {
   id: number;
   page_number: number;
   sentence: string;
-  // text: string;
-  // author: string;
 }
 
 const QuotesData = () => {

@@ -18,7 +18,7 @@ const QuotesCount = () => {
 
   // このままの状態だと、kaminariのページネーションの１ページ目しか反映されない。
   // @quotes = Quote.all を別のコントローラーに書いて、それをfetchしてあげる必要がある（API用のコントローラー）
-  return <div>配列の総数は {data.length} つです。</div>;
+  return <div>引用の総数は {data.length} つです。</div>;
 };
 
 export default QuotesCount;

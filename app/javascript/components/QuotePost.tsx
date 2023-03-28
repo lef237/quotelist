@@ -21,11 +21,7 @@ const QuotePost: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    // 更新後に上書きする場合は、空文字を使う必要がある（nullやundefinedは上書きされない）
     setFormData(initialState);
-
-    // const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
     const csrfToken = document
       .querySelector('meta[name="csrf-token"]')
@@ -46,10 +42,8 @@ const QuotePost: React.FC = () => {
 
     if (response.ok) {
       console.log("Contact form submitted successfully!");
-      // Do something after successful submission
     } else {
       console.error("Failed to submit contact form.");
-      // Handle submission error
     }
   };
 
@@ -64,7 +58,6 @@ const QuotePost: React.FC = () => {
   };
 
   return (
-    // ここのinput type="number"で数値型が送信されるようにしている
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="user_id">User ID:</label>
