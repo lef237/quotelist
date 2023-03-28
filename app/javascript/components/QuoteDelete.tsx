@@ -32,7 +32,7 @@ const QuoteDelete = ({ id, onDelete }: Props) => {
 
   return (
     <>
-      <div>この引用のIDは {id} です。</div>
+      <div className="bg-green-500">この引用のIDは {id} です。</div>
       <button onClick={handleDelete}>削除</button>
     </>
   );
