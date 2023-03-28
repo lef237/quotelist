@@ -1,10 +1,20 @@
 p style="color: green" = notice
 
+h1 引用のPOSTボタンとDELETEをReactで作ってみる
+
+#quotepost
+
+h1 ReactQuotesData
+
+#quotescount
+#quotesdata
+
 h1 Quotes
 
 #quotes
-  - @quotes.each do |quote|
+  - @quotes.each_with_index do |quote, index|
     == render quote
+    = content_tag :div, id: "quotedelete#{index}", data: { id: quote.id, user_id: quote.user_id, book_id: quote.book_id, sentence: quote.sentence }.to_json do
     p
       = link_to "Show this quote", quote
   = paginate @quotes

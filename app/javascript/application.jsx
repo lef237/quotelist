@@ -9,6 +9,10 @@ import MountComponents from "./MountComponents";
 import Hello from "./components/Hello";
 import Hey from "./components/Hey";
 import Hola from "./components/Hola";
+import QuotesData from "./components/QuotesData";
+import QuotesCount from "./components/QuotesCount";
+import QuotePost from "./components/QuotePost";
+import QuoteDelete from "./components/QuoteDelete";
 
 const divElements = document.querySelectorAll("div");
 
@@ -17,3 +21,7 @@ MountComponents(Hey, "hey", divElements);
 MountComponents(Hola, "hola", divElements);
 // holaholaをHelloでマウントしている。実験的な例。
 MountComponents(Hello, "holahola", divElements);
+MountComponents(QuotesData, "quotesdata", divElements);
+MountComponents(QuotesCount, "quotescount", divElements);
+MountComponents(QuotePost, "quotepost", divElements);
+MountComponents(QuoteDelete, "quotedelete", divElements);
