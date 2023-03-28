@@ -1,0 +1,2 @@
+class TotalQuotesController < ApplicationController
+end
