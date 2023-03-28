@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     # indexなどの画面は必要ないので後で制約を付ける。（本の個別ページに引用一覧を表示する）
     resources :quotes
   end
+  resources :total_quotes, only: [:index]
   get 'terms_of_service', to: 'top#terms_of_service'
   get 'privacy_policy', to: 'top#privacy_policy'
   devise_for :users
