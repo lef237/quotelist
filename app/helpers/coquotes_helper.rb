@@ -1,0 +1,2 @@
+module CoquotesHelper
+end

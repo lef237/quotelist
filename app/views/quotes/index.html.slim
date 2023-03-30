@@ -15,6 +15,13 @@ h1 Quotes
   - @quotes.each_with_index do |quote, index|
     == render quote
     = content_tag :div, id: "quotedelete#{index}", data: { id: quote.id, user_id: quote.user_id, book_id: quote.book_id, sentence: quote.sentence }.to_json do
+    - matching_quote = current_user.quotes.find_by(source_quote_id: quote.id)
+    - if matching_quote
+      p 既にCoquoteしている場合に表示 → CoquoteボタンONの状態でSTART → dataでtrueフラグを渡せば良さそう？（boolean）
+    - elsif current_user
+      p まだCoquoteしていない場合に表示 → CoquoteボタンOFFの状態でSTART → dataでfalseフラグを渡せば良さそう？（boolean）
+    - else
+      p ログインしてください
     p
       = link_to "Show this quote", quote
   = paginate @quotes
