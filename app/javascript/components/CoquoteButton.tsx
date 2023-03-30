@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 
-const CoquoteButton = ({ quoteId }) => {
-  const [coquoted, setCoquoted] = useState(false); // ここの初期値はfalseになっているが、後で引数次第にする
+type Props = {
+  quoteId: number;
+  isCoquoted: boolean;
+};
+
+const CoquoteButton = ({ quoteId, isCoquoted = false }: Props) => {
+  // console.log(typeof quoteId)
+  const [coquoted, setCoquoted] = useState(isCoquoted);
 
   const csrfToken = document
     .querySelector('meta[name="csrf-token"]')
     ?.getAttribute("content");
 
-  const handleLike = async () => {
+  const handleCoquote = async () => {
     const response = await fetch(`/quotes/${quoteId}/coquotes`, {
       method: "POST",
       headers: {
@@ -21,7 +27,8 @@ const CoquoteButton = ({ quoteId }) => {
     }
   };
 
-  const handleUnlike = async () => {
+  // 子Quoteがある場合は削除できない
+  const handleUnCoquote = async () => {
     const response = await fetch(`/quotes/${quoteId}/coquotes`, {
       method: "DELETE",
       headers: {
@@ -33,10 +40,15 @@ const CoquoteButton = ({ quoteId }) => {
     if (response.ok) {
       setCoquoted(false);
     }
+
+    if (!response.ok) {
+      console.log(`子引用があるので削除できません。`)
+      window.alert(`子引用があるので削除できません。`)
+    }
   };
 
   return (
-    <button onClick={coquoted ? handleUnlike : handleLike}>
+    <button onClick={coquoted ? handleUnCoquote : handleCoquote}>
       {coquoted ? "UnCoquote" : "Coquote"}
     </button>
   );
