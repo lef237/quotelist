@@ -15,7 +15,7 @@ class CoquotesController < ApplicationController
 
   def destroy
     # params[:quote_id]を受け取る
-    @quote = Quote.find_by(source_quote_id: params[:quote_id])
+    @quote = Quote.find_by(source_quote_id: params[:quote_id], user_id: current_user.id)
     # current_userのQuote一覧から、source_quote_idがparamsに一致するものを探す
     # destroyして、それをresponseに返す
     if @quote.destroy

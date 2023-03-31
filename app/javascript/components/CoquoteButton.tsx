@@ -3,11 +3,13 @@ import React, { useState } from "react";
 type Props = {
   quoteId: number;
   isCoquoted: boolean;
+  numberCoquoted: number;
 };
 
-const CoquoteButton = ({ quoteId, isCoquoted = false }: Props) => {
+const CoquoteButton = ({ quoteId, isCoquoted = false, numberCoquoted }: Props) => {
   // console.log(typeof quoteId)
   const [coquoted, setCoquoted] = useState(isCoquoted);
+  const [numCoquoted, setNumCoquoted] = useState(numberCoquoted);
 
   const csrfToken = document
     .querySelector('meta[name="csrf-token"]')
@@ -24,6 +26,7 @@ const CoquoteButton = ({ quoteId, isCoquoted = false }: Props) => {
 
     if (response.ok) {
       setCoquoted(true);
+      setNumCoquoted(numCoquoted + 1);
     }
   };
 
@@ -39,6 +42,7 @@ const CoquoteButton = ({ quoteId, isCoquoted = false }: Props) => {
 
     if (response.ok) {
       setCoquoted(false);
+      setNumCoquoted(numCoquoted - 1);
     }
 
     if (!response.ok) {
@@ -48,9 +52,14 @@ const CoquoteButton = ({ quoteId, isCoquoted = false }: Props) => {
   };
 
   return (
-    <button onClick={coquoted ? handleUnCoquote : handleCoquote}>
-      {coquoted ? "UnCoquote" : "Coquote"}
-    </button>
+    <div>
+      <button onClick={coquoted ? handleUnCoquote : handleCoquote}>
+        {coquoted ? "UnCoquote" : "Coquote"}
+      </button>
+      <br/>
+      {/* 後で引用者一覧ページに変更する */}
+      <a href={`/quotes/${quoteId}`}>{numCoquoted}人に引用されています</a>
+    </div>
   );
 };
 
