@@ -57,7 +57,7 @@ h1 Quotes
       - if current_user
         = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json do
       - else
-        p ログインしてください
+        = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json do
       p
         = link_to "Show this quote", quote
     = paginate @quotes
