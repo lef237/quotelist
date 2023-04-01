@@ -1,0 +1,14 @@
+= @quote.sentence
+= @quote.book.title
+= @quote.page_number
+= @quote.child_quotes.length
+
+p 本へのリンク
+= link_to @quote.book.title, book_path(@quote.book)
+
+ul
+  - @coquote_users.each do |user|
+    li
+      = link_to user.name, user_path(user)
+
+= link_to '引用に戻る', quote_path(@quote)

@@ -4,9 +4,9 @@ class HomeController < ApplicationController
   def index
     sort = params[:sort]
     @quotes = if sort == 'random'
-                Quote.order('RANDOM()').page(params[:page])
+                Quote.where(source_quote_id: nil).order('RANDOM()').page(params[:page])
               else
-                Quote.all.order(created_at: :desc).page(params[:page])
+                Quote.all.where(source_quote_id: nil).order(created_at: :desc).page(params[:page])
               end
 
     return unless @quotes.empty?

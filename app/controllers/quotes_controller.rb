@@ -63,6 +63,11 @@ class QuotesController < ApplicationController
     redirect_to book_url(@quote.book_id)
   end
 
+  def coquote_users
+    @quote = Quote.find(params[:id])
+    @coquote_users = @quote.child_quotes.map(&:user)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

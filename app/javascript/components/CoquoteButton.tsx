@@ -60,8 +60,9 @@ const CoquoteButton = ({
       </button>
       <p>{numCoquoted}</p>
       <br />
-      {/* 後で引用者一覧ページに変更する */}
-      <a href={`/quotes/${quoteId}`}>{numCoquoted}人に引用されています</a>
+      <a href={`/quotes/${quoteId}/coquote_users`}>
+        {numCoquoted}人に引用されています
+      </a>
     </div>
   );
 };
