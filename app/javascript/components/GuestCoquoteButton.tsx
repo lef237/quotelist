@@ -15,6 +15,7 @@ const GuestCoquoteButton = ({ quoteId, numberCoquoted }: Props) => {
       <button onClick={handleClick}>
         リツイートボタン
       </button>
+      <p>{numberCoquoted}</p>
       <br />
       <a href={`/quotes/${quoteId}`}>{numberCoquoted}人に引用されています</a>
     </>

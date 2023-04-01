@@ -7,7 +7,6 @@ type Props = {
 };
 
 const CoquoteButton = ({ quoteId, isCoquoted = false, numberCoquoted }: Props) => {
-  // console.log(typeof quoteId)
   const [coquoted, setCoquoted] = useState(isCoquoted);
   const [numCoquoted, setNumCoquoted] = useState(numberCoquoted);
 
@@ -30,7 +29,6 @@ const CoquoteButton = ({ quoteId, isCoquoted = false, numberCoquoted }: Props) =
     }
   };
 
-  // 子Quoteがある場合は削除できない
   const handleUnCoquote = async () => {
     const response = await fetch(`/quotes/${quoteId}/coquotes`, {
       method: "DELETE",
@@ -56,6 +54,7 @@ const CoquoteButton = ({ quoteId, isCoquoted = false, numberCoquoted }: Props) =
       <button onClick={coquoted ? handleUnCoquote : handleCoquote}>
         {coquoted ? "UnCoquote" : "Coquote"}
       </button>
+      <p>{numCoquoted}</p>
       <br/>
       {/* 後で引用者一覧ページに変更する */}
       <a href={`/quotes/${quoteId}`}>{numCoquoted}人に引用されています</a>
