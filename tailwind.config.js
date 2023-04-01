@@ -7,5 +7,9 @@ module.exports = {
     './app/javascript/**/*.js',
     './app/javascript/**/*.jsx',
     './app/javascript/**/*.tsx'
-  ]
+  ],
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["cupcake"],
+  },
 }
