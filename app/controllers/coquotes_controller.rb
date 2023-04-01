@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CoquotesController < ApplicationController
   def create
     source_quote = Quote.find(params[:quote_id])

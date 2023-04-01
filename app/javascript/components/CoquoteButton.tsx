@@ -6,7 +6,11 @@ type Props = {
   numberCoquoted: number;
 };
 
-const CoquoteButton = ({ quoteId, isCoquoted = false, numberCoquoted }: Props) => {
+const CoquoteButton = ({
+  quoteId,
+  isCoquoted = false,
+  numberCoquoted,
+}: Props) => {
   const [coquoted, setCoquoted] = useState(isCoquoted);
   const [numCoquoted, setNumCoquoted] = useState(numberCoquoted);
 
@@ -44,8 +48,8 @@ const CoquoteButton = ({ quoteId, isCoquoted = false, numberCoquoted }: Props) =
     }
 
     if (!response.ok) {
-      console.log(`子引用があるので削除できません。`)
-      window.alert(`子引用があるので削除できません。`)
+      console.log(`子引用があるので削除できません。`);
+      window.alert(`子引用があるので削除できません。`);
     }
   };
 
@@ -55,7 +59,7 @@ const CoquoteButton = ({ quoteId, isCoquoted = false, numberCoquoted }: Props) =
         {coquoted ? "UnCoquote" : "Coquote"}
       </button>
       <p>{numCoquoted}</p>
-      <br/>
+      <br />
       {/* 後で引用者一覧ページに変更する */}
       <a href={`/quotes/${quoteId}`}>{numCoquoted}人に引用されています</a>
     </div>
