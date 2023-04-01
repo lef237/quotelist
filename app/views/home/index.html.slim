@@ -50,9 +50,9 @@ h1 Quotes
     - @quotes.each.with_index(33) do |quote, index|
       == render quote
       = content_tag :div, id: "hola#{index}", data: { name: '砂糖', age: 64 }.to_json do
-      - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present? if current_user
       - number_coquoted = quote.child_quotes.length
       - if current_user
+        - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
         = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json do
       - else
         = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json do
