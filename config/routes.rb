@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get 'users/show/:id', to: 'users#show', as: 'user'
   resources :quotes do
     resource :coquotes, only: [:create, :destroy]
+    member do
+      get 'coquote_users'
+    end
   end
   resources :books do
     # indexなどの画面も必要ある→検索時に使うため
