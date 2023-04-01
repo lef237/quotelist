@@ -13,6 +13,8 @@ import QuotesData from "./components/QuotesData";
 import QuotesCount from "./components/QuotesCount";
 import QuotePost from "./components/QuotePost";
 import QuoteDelete from "./components/QuoteDelete";
+import CoquoteButton from "./components/CoquoteButton";
+import GuestCoquoteButton from "./components/GuestCoquoteButton";
 
 const divElements = document.querySelectorAll("div");
 
@@ -25,3 +27,5 @@ MountComponents(QuotesData, "quotesdata", divElements);
 MountComponents(QuotesCount, "quotescount", divElements);
 MountComponents(QuotePost, "quotepost", divElements);
 MountComponents(QuoteDelete, "quotedelete", divElements);
+MountComponents(CoquoteButton, "coquotebutton", divElements);
+MountComponents(GuestCoquoteButton, "guestcoquotebutton", divElements);

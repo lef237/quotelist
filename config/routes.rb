@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   # 後でTOP画面（root画面）に引用一覧を表示させる（index表示）
   get 'users/show/:id', to: 'users#show', as: 'user'
-  resources :quotes
+  resources :quotes do
+    resource :coquotes, only: [:create, :destroy]
+  end
   resources :books do
-    # indexなどの画面は必要ないので後で制約を付ける。（本の個別ページに引用一覧を表示する）
+    # indexなどの画面も必要ある→検索時に使うため
     resources :quotes
   end
   resources :total_quotes, only: [:index]
