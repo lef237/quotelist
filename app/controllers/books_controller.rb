@@ -21,6 +21,8 @@ class BooksController < ApplicationController
     sort = params[:sort]
     @quotes = if sort == 'random'
                 Quote.where(book_id: params[:id], source_quote_id: nil).order('RANDOM()').page(params[:page])
+              elsif sort == 'popular'
+                Quote.where(book_id: params[:id], source_quote_id: nil).popular.page(params[:page])
               else
                 Quote.where(book_id: params[:id], source_quote_id: nil).order(created_at: :desc).page(params[:page])
               end

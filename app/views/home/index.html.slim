@@ -16,7 +16,7 @@ h2
   | QuoteList
 
 = link_to 'ランダム表示', root_path(sort: 'random')
-= link_to '人気順', root_path(sort: 'popular')
+= link_to '人気順で表示', root_path(sort: 'popular')
 
 h1 Quotes
 
@@ -24,10 +24,8 @@ h1 Quotes
   - if @message.present?
     p = @message
   - else
-    / 本来はeach_with_indexで大丈夫だが、上記のhola1~4とかぶっているので、each.with_indexを使ってhola33からスタートさせている
     - @quotes.each_with_index do |quote, index|
       == render quote
-      = content_tag :div, id: "hola#{index}", data: { name: '砂糖', age: 64 }.to_json do
       - number_coquoted = quote.child_quotes.length
       - if current_user
         - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
