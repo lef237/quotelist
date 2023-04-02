@@ -6,6 +6,8 @@ class UsersController < ApplicationController
     sort = params[:sort]
     @quotes = if sort == 'random'
                 Quote.where(user_id: params[:id]).order('RANDOM()').page(params[:page]).per(10)
+              elsif sort == 'popular'
+                Quote.where(user_id: params[:id]).user_popular.page(params[:page]).per(10)
               else
                 Quote.where(user_id: params[:id]).order(created_at: :desc).page(params[:page]).per(10)
               end

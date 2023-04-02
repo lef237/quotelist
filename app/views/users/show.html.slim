@@ -8,6 +8,7 @@ p MyPage: #{@user.profile_url}
 = image_tag @user.avatar.variant(resize_to_fit: [500, 500]) if @user.avatar.attached?
 
 = link_to 'ランダム表示', user_path(sort: 'random')
+= link_to '人気順で表示', user_path(sort: 'popular')
 
 h2 Quotes
 
@@ -15,8 +16,14 @@ h2 Quotes
   - if @message.present?
     p = @message
   - else
-    - @quotes.each do |quote|
+    - @quotes.each_with_index do |quote, index|
       == render quote
+      - number_coquoted = quote.child_quotes.length
+      - if current_user
+        - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
+        = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json do
+      - else
+        = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json do
       p
         = link_to "Show this quote", quote
     = paginate @quotes
