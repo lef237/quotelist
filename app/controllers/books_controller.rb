@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'csv'
+
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
   before_action :require_login, only: %i[edit create update destroy]
@@ -27,9 +29,14 @@ class BooksController < ApplicationController
                 Quote.where(book_id: params[:id], source_quote_id: nil).order(created_at: :desc).page(params[:page])
               end
 
-    return unless @quotes.empty?
+    @all_quotes = Quote.where(book_id: params[:id], source_quote_id: nil)
 
-    @message = 'まだ引用はありません。'
+    @message = 'まだ引用はありません。' if @quotes.empty?
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data quotes_to_csv(@all_quotes), filename: "book_quotes_#{params[:id]}.csv" }
+    end
   end
 
   # GET /books/new
@@ -97,5 +104,15 @@ class BooksController < ApplicationController
     return if current_user
 
     redirect_to root_path, alert: 'You are not authorized to edit this book.'
+  end
+
+  def quotes_to_csv(quotes)
+    CSV.generate(headers: true) do |csv|
+      csv << %w[書籍名 著者名 引用文 引用ページ]
+
+      quotes.each do |quote|
+        csv << [quote.book.title, quote.book.author, quote.sentence, quote.page_number]
+      end
+    end
   end
 end
