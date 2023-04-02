@@ -1,5 +1,7 @@
 # frozen_string_literal: true
+
 require 'csv'
+
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
   before_action :require_login, only: %i[edit create update destroy]
