@@ -16,9 +16,7 @@ class UsersController < ApplicationController
 
     @all_quotes = Quote.where(user_id: params[:id])
 
-    if @quotes.empty?
-      @message = 'まだ引用はありません。'
-    end
+    @message = 'まだ引用はありません。' if @quotes.empty?
 
     respond_to do |format|
       format.html
@@ -30,7 +28,7 @@ class UsersController < ApplicationController
 
   def quotes_to_csv(quotes)
     CSV.generate(headers: true) do |csv|
-      csv << ['書籍名', '著者名', '引用文', '引用ページ']
+      csv << %w[書籍名 著者名 引用文 引用ページ]
 
       quotes.each do |quote|
         csv << [quote.book.title, quote.book.author, quote.sentence, quote.page_number]

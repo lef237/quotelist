@@ -31,9 +31,7 @@ class BooksController < ApplicationController
 
     @all_quotes = Quote.where(book_id: params[:id], source_quote_id: nil)
 
-    if @quotes.empty?
-      @message = 'まだ引用はありません。'
-    end
+    @message = 'まだ引用はありません。' if @quotes.empty?
 
     respond_to do |format|
       format.html
@@ -110,7 +108,7 @@ class BooksController < ApplicationController
 
   def quotes_to_csv(quotes)
     CSV.generate(headers: true) do |csv|
-      csv << ['書籍名', '著者名', '引用文', '引用ページ']
+      csv << %w[書籍名 著者名 引用文 引用ページ]
 
       quotes.each do |quote|
         csv << [quote.book.title, quote.book.author, quote.sentence, quote.page_number]
