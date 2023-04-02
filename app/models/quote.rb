@@ -15,9 +15,9 @@ class Quote < ApplicationRecord
   end
 
   def self.user_popular
-    joins("LEFT OUTER JOIN quotes AS child_quotes ON quotes.id = child_quotes.source_quote_id")
-      .group("quotes.id")
-      .select("quotes.*, COUNT(child_quotes.id) AS child_quotes_count")
-      .order("child_quotes_count DESC")
+    joins('LEFT OUTER JOIN quotes AS child_quotes ON quotes.id = child_quotes.source_quote_id')
+      .group('quotes.id')
+      .select('quotes.*, COUNT(child_quotes.id) AS child_quotes_count')
+      .order('child_quotes_count DESC')
   end
 end
