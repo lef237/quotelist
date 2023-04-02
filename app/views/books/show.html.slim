@@ -15,6 +15,10 @@ div
 
 h1 Quotes
 
+p
+  strong 引用一覧:
+  = link_to 'この書籍の引用一覧をCSVでダウンロード', book_path(@book, format: :csv)
+
 #quotes
   - if @message.present?
     p = @message
