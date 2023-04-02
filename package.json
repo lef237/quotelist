@@ -5,6 +5,7 @@
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^7.3.0",
     "autoprefixer": "^10.4.13",
+    "daisyui": "^2.51.5",
     "esbuild": "^0.17.11",
     "postcss": "^8.4.21",
     "react": "^18.2.0",

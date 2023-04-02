@@ -59,7 +59,6 @@ const CoquoteButton = ({
         {coquoted ? "UnCoquote" : "Coquote"}
       </button>
       <p>{numCoquoted}</p>
-      <br />
       <a href={`/quotes/${quoteId}/coquote_users`}>
         {numCoquoted}人に引用されています
       </a>

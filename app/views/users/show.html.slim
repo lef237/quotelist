@@ -1,5 +1,4 @@
-h1 Users#show
-p Find me in app/views/users/show.html.slim
+h1 UserPage
 
 p MyID: #{@user.id}
 p MyName: #{@user.name}
@@ -10,7 +9,7 @@ p MyPage: #{@user.profile_url}
 
 = link_to 'ランダム表示', user_path(sort: 'random')
 
-h1 Quotes
+h2 Quotes
 
 #quotes
   - if @message.present?

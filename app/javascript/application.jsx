@@ -21,8 +21,6 @@ const divElements = document.querySelectorAll("div");
 MountComponents(Hello, "hello", divElements);
 MountComponents(Hey, "hey", divElements);
 MountComponents(Hola, "hola", divElements);
-// holaholaをHelloでマウントしている。実験的な例。
-MountComponents(Hello, "holahola", divElements);
 MountComponents(QuotesData, "quotesdata", divElements);
 MountComponents(QuotesCount, "quotescount", divElements);
 MountComponents(QuotePost, "quotepost", divElements);

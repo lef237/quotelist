@@ -1,7 +1,10 @@
+/ 下の４つは後で消す？
 = @quote.sentence
 = @quote.book.title
 = @quote.page_number
 = @quote.child_quotes.length
+
+== render @quote
 
 p 本へのリンク
 = link_to @quote.book.title, book_path(@quote.book)
