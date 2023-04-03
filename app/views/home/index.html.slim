@@ -1,45 +1,46 @@
-- if user_signed_in?
-  = link_to '登録情報編集', edit_user_registration_path
-  / link_toだとmethodの指定に関わらずgetが呼ばれてしまうため、button_toにしている
-  = button_to 'ログアウト', destroy_user_session_path, method: :delete
-- else
-  = link_to 'ログイン', new_user_session_path
-  = link_to '新規登録', new_user_registration_path
+/ - if user_signed_in?
+/   = link_to '登録情報編集', edit_user_registration_path
+/   / link_toだとmethodの指定に関わらずgetが呼ばれてしまうため、button_toにしている
+/   = button_to 'ログアウト', destroy_user_session_path, method: :delete
+/ - else
+/   = link_to 'ログイン', new_user_session_path
+/   = link_to '新規登録', new_user_registration_path
 
-= form_with url: books_path, method: :get, local: true do |f|
-  = f.text_field :keyword, placeholder: '著者名 or 書籍名'
-  = f.submit "検索"
+/ = form_with url: books_path, method: :get, local: true do |f|
+/   = f.text_field :keyword, placeholder: '著者名 or 書籍名'
+/   = f.submit "検索"
 
-h1
-  | 引用箱
-h2
-  | QuoteList
+/ h1
+/   | 引用箱
+/ h2
+/   | QuoteList
 
-= link_to 'ランダム表示', root_path(sort: 'random')
-= link_to '人気順で表示', root_path(sort: 'popular')
+/ = link_to 'ランダム表示', root_path(sort: 'random')
+/ = link_to '人気順で表示', root_path(sort: 'popular')
 
-h1 Quotes
+/ h1 Quotes
 
-#quotes
-  - if @message.present?
-    p = @message
-  - else
-    - @quotes.each_with_index do |quote, index|
-      == render quote
-      - number_coquoted = quote.child_quotes.length
-      - if current_user
-        - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
-        = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json do
-      - else
-        = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json do
-      p
-        = link_to "Show this quote", quote
-    = paginate @quotes
+/ #quotes
+/   - if @message.present?
+/     p = @message
+/   - else
+/     - @quotes.each_with_index do |quote, index|
+/       == render quote
+/       - number_coquoted = quote.child_quotes.length
+/       - if current_user
+/         - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
+/         = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json do
+/       - else
+/         = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json do
+/       p
+/         = link_to "Show this quote", quote
+/     = paginate @quotes
 
-= link_to '利用規約', terms_of_service_path
-= link_to 'プライバシーポリシー', privacy_policy_path
+/ = link_to '利用規約', terms_of_service_path
+/ = link_to 'プライバシーポリシー', privacy_policy_path
 
 / デザイン前とデザイン語を見比べられるように、上下に配置する
+/ 上下に配置していたら、divIdが被ってしまっていた（Reactが表示されなくなってしまっていた）。
 
 div class="theme-cupcake container mx-auto px-4"
   div class="bg-white shadow-md rounded-lg p-6"
