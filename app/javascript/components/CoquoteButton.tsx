@@ -54,14 +54,62 @@ const CoquoteButton = ({
   };
 
   return (
+    // <div>
+    //   <button onClick={coquoted ? handleUnCoquote : handleCoquote}>
+    //     {coquoted ? "UnCoquote" : "Coquote"}
+    //   </button>
+    //   <p>{numCoquoted}</p>
+    //   <a href={`/quotes/${quoteId}/coquote_users`}>
+    //     {numCoquoted}人に引用されています
+    //   </a>
+    // </div>
+
+    // <div>
+    //   <button
+    //     onClick={coquoted ? handleUnCoquote : handleCoquote}
+    //     className={`btn ${coquoted ? "btn-error" : "btn-primary"}`}
+    //   >
+    //     {coquoted ? "UnCoquote" : "Coquote"}
+    //   </button>
+    //   <p>{numCoquoted}</p>
+    //   <a
+    //     href={`/quotes/${quoteId}/coquote_users`}
+    //     className="text-blue-600 underline hover:text-blue-800"
+    //   >
+    //     {numCoquoted}人に引用されています
+    //   </a>
+    // </div>
+
+    // <div className="flex items-center space-x-2">
+    //   <button
+    //     onClick={coquoted ? handleUnCoquote : handleCoquote}
+    //     className={`btn ${coquoted ? "btn-error" : "btn-primary"}`}
+    //   >
+    //     {coquoted ? "UnCoquote" : "Coquote"}
+    //   </button>
+    //   <p className="mb-0 text-blue-600">{numCoquoted}</p>
+    //   <br />
+    //   <a href={`/quotes/${quoteId}/coquote_users`} className="text-blue-600 underline hover:text-blue-800">
+    //     {numCoquoted}人に引用されています
+    //   </a>
+    // </div>
+
     <div>
-      <button onClick={coquoted ? handleUnCoquote : handleCoquote}>
-        {coquoted ? "UnCoquote" : "Coquote"}
-      </button>
-      <p>{numCoquoted}</p>
-      <a href={`/quotes/${quoteId}/coquote_users`}>
-        {numCoquoted}人に引用されています
-      </a>
+      <div className="flex items-center space-x-2">
+        <button
+          onClick={coquoted ? handleUnCoquote : handleCoquote}
+          className={`btn ${coquoted ? "btn-error" : "btn-primary"}`}
+        >
+          {coquoted ? "UnCoquote" : "Coquote"}
+        </button>
+        {/* <p className="mb-0 text-blue-600">{numCoquoted}</p> */}
+        <p className="mb-0 text-blue-600 text-lg font-semibold">{numCoquoted}</p>
+      </div>
+      <div>
+        <a href={`/quotes/${quoteId}/coquote_users`} className="text-blue-600 underline hover:text-blue-800">
+          {numCoquoted}人に引用されています
+        </a>
+      </div>
     </div>
   );
 };

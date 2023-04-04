@@ -91,22 +91,37 @@
 
 
 / ブラウザの幅によって画面表示を上下表示と左右表示に切り替える
-header class="bg-white shadow-md px-4 py-2 fixed w-full z-10"
+/ header class="bg-white shadow-md px-4 py-2 fixed w-full z-10"
+/   div class="container mx-auto"
+/     div class="flex justify-between items-center"
+/       - if user_signed_in?
+/         = link_to '登録情報編集', edit_user_registration_path, class: 'btn btn-secondary'
+/         / link_toだとmethodの指定に関わらずgetが呼ばれてしまうため、button_toにしている
+/         = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-error'
+/       - else
+/         = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary'
+/         = link_to '新規登録', new_user_registration_path, class: 'btn btn-accent'
+/       = form_with url: books_path, method: :get, local: true, class: 'd-flex mt-4' do |f|
+/         = f.text_field :keyword, placeholder: '著者名 or 書籍名', class: 'input input-bordered'
+/         = f.submit "検索", class: "btn btn-primary ml-2"
+
+header class="bg-white shadow-md px-4 py-2 relative w-full z-10"
   div class="container mx-auto"
     div class="flex justify-between items-center"
       - if user_signed_in?
-        = link_to '登録情報編集', edit_user_registration_path, class: 'btn btn-secondary'
+        = link_to '登録情報編集', edit_user_registration_path, class: 'btn btn-xs btn-secondary'
         / link_toだとmethodの指定に関わらずgetが呼ばれてしまうため、button_toにしている
-        = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-error'
+        = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-xs btn-error'
       - else
-        = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary'
-        = link_to '新規登録', new_user_registration_path, class: 'btn btn-accent'
+        = link_to 'ログイン', new_user_session_path, class: 'btn btn-xs btn-primary'
+        = link_to '新規登録', new_user_registration_path, class: 'btn btn-xs btn-accent'
       = form_with url: books_path, method: :get, local: true, class: 'd-flex mt-4' do |f|
-        = f.text_field :keyword, placeholder: '著者名 or 書籍名', class: 'input input-bordered'
-        = f.submit "検索", class: "btn btn-primary ml-2"
+        = f.text_field :keyword, placeholder: '著者名 or 書籍名', class: 'input input-xs input-bordered'
+        = f.submit "検索", class: "btn btn-xs btn-primary ml-2"
+
 
 / `pt-{数字}`の値は4の倍数にする必要がある
-div class="theme-cupcake container mx-auto px-4 pt-24"
+div class="theme-cupcake container mx-auto px-4"
   div class="shadow-md rounded-lg p-6"
     div class="flex flex-col md:flex-row"
       div class="w-full md:w-1/3"
@@ -117,6 +132,10 @@ div class="theme-cupcake container mx-auto px-4 pt-24"
 
         = link_to 'ランダム表示', root_path(sort: 'random'), class: 'btn btn-sm btn-outline btn-rounded mr-2'
         = link_to '人気順で表示', root_path(sort: 'popular'), class: 'btn btn-sm btn-outline btn-rounded'
+        br/
+        / = link_to "#{@quotes.count}つの引用が投稿されています。", books_path
+        = link_to "#{@quotes.count}つの引用が投稿されています。", books_path, class: "text-brown-600 hover:text-brown-800"
+
 
       div class="w-full md:w-2/3 md:pl-8 mt-8 md:mt-0"
         h1 class="text-3xl font-bold mb-4" Quotes
