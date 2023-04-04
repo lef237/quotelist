@@ -42,48 +42,105 @@
 / デザイン前とデザイン語を見比べられるように、上下に配置する
 / 上下に配置していたら、divIdが被ってしまっていた（Reactが表示されなくなってしまっていた）。
 
-div class="theme-cupcake container mx-auto px-4"
-  div class="bg-white shadow-md rounded-lg p-6"
-    - if user_signed_in?
-      = link_to '登録情報編集', edit_user_registration_path, class: 'btn btn-secondary'
-      / link_toだとmethodの指定に関わらずgetが呼ばれてしまうため、button_toにしている
-      = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-error'
-    - else
-      = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary'
-      = link_to '新規登録', new_user_registration_path, class: 'btn btn-accent'
+/ div class="theme-cupcake container mx-auto px-4"
+/   div class="bg-white shadow-md rounded-lg p-6"
+/     - if user_signed_in?
+/       = link_to '登録情報編集', edit_user_registration_path, class: 'btn btn-secondary'
+/       / link_toだとmethodの指定に関わらずgetが呼ばれてしまうため、button_toにしている
+/       = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-error'
+/     - else
+/       = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary'
+/       = link_to '新規登録', new_user_registration_path, class: 'btn btn-accent'
 
-    = form_with url: books_path, method: :get, local: true, class: 'form-control mt-4' do |f|
-      = f.text_field :keyword, placeholder: '著者名 or 書籍名', class: 'input input-bordered'
-      = f.submit "検索", class: "btn btn-primary mt-2"
+/     = form_with url: books_path, method: :get, local: true, class: 'form-control mt-4' do |f|
+/       = f.text_field :keyword, placeholder: '著者名 or 書籍名', class: 'input input-bordered'
+/       = f.submit "検索", class: "btn btn-primary mt-2"
 
-    h1 class="text-4xl font-bold mb-4"
-      | 引用箱
-    h2 class="text-2xl font-semibold mb-2"
-      | QuoteList
+/     h1 class="text-4xl font-bold mb-4"
+/       | 引用箱
+/     h2 class="text-2xl font-semibold mb-2"
+/       | QuoteList
 
-    = link_to 'ランダム表示', root_path(sort: 'random'), class: 'btn btn-sm btn-outline btn-rounded mr-2'
-    = link_to '人気順で表示', root_path(sort: 'popular'), class: 'btn btn-sm btn-outline btn-rounded'
+/     = link_to 'ランダム表示', root_path(sort: 'random'), class: 'btn btn-sm btn-outline btn-rounded mr-2'
+/     = link_to '人気順で表示', root_path(sort: 'popular'), class: 'btn btn-sm btn-outline btn-rounded'
 
-  h1 class="text-3xl font-bold mt-8 mb-4" Quotes
+/   h1 class="text-3xl font-bold mt-8 mb-4" Quotes
 
-  #quotes
-    - if @message.present?
-      p = @message
-    - else
-      - @quotes.each_with_index do |quote, index|
-        div class="bg-white shadow-md rounded-lg p-4 mb-4"
-          == render quote
-          - number_coquoted = quote.child_quotes.length
-          - if current_user
-            - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
-            = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
+/   #quotes
+/     - if @message.present?
+/       p = @message
+/     - else
+/       - @quotes.each_with_index do |quote, index|
+/         div class="bg-white shadow-md rounded-lg p-4 mb-4"
+/           == render quote
+/           - number_coquoted = quote.child_quotes.length
+/           - if current_user
+/             - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
+/             = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
+/           - else
+/             = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
+/           p
+/             = link_to "Show this quote", quote, class: 'btn btn-sm btn-outline btn-rounded'
+
+/     = paginate @quotes, class: 'mt-4'
+
+/   div class="flex justify-center space-x-4 mt-8"
+/     = link_to '利用規約', terms_of_service_path, class: 'text-sm text-gray-600 hover:underline'
+/     = link_to 'プライバシーポリシー', privacy_policy_path, class: 'text-sm text-gray-600 hover:underline'
+
+
+
+/ ブラウザの幅によって画面表示を上下表示と左右表示に切り替える
+header class="bg-white shadow-md px-4 py-2 fixed w-full z-10"
+  div class="container mx-auto"
+    div class="flex justify-between items-center"
+      - if user_signed_in?
+        = link_to '登録情報編集', edit_user_registration_path, class: 'btn btn-secondary'
+        / link_toだとmethodの指定に関わらずgetが呼ばれてしまうため、button_toにしている
+        = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-error'
+      - else
+        = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary'
+        = link_to '新規登録', new_user_registration_path, class: 'btn btn-accent'
+      = form_with url: books_path, method: :get, local: true, class: 'd-flex mt-4' do |f|
+        = f.text_field :keyword, placeholder: '著者名 or 書籍名', class: 'input input-bordered'
+        = f.submit "検索", class: "btn btn-primary ml-2"
+
+/ `pt-{数字}`の値は4の倍数にする必要がある
+div class="theme-cupcake container mx-auto px-4 pt-24"
+  div class="shadow-md rounded-lg p-6"
+    div class="flex flex-col md:flex-row"
+      div class="w-full md:w-1/3"
+        h1 class="text-4xl font-bold mb-4"
+          | 引用箱
+        h2 class="text-2xl font-semibold mb-2"
+          | QuoteList
+
+        = link_to 'ランダム表示', root_path(sort: 'random'), class: 'btn btn-sm btn-outline btn-rounded mr-2'
+        = link_to '人気順で表示', root_path(sort: 'popular'), class: 'btn btn-sm btn-outline btn-rounded'
+
+      div class="w-full md:w-2/3 md:pl-8 mt-8 md:mt-0"
+        h1 class="text-3xl font-bold mb-4" Quotes
+
+        #quotes
+          - if @message.present?
+            p = @message
           - else
-            = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
-          p
-            = link_to "Show this quote", quote, class: 'btn btn-sm btn-outline btn-rounded'
+            - @quotes.each_with_index do |quote, index|
+              div class="bg-white shadow-md rounded-lg p-4 mb-4"
+                == render quote
+                - number_coquoted = quote.child_quotes.length
+                - if current_user
+                  - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
+                  = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
+                - else
+                  = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, number_coquoted: number_coquoted }.to_json, class: 'mt-2' do
+                p
+                  = link_to "Show this quote", quote, class: 'btn btn-sm btn-outline btn-rounded'
 
-    = paginate @quotes, class: 'mt-4'
+        = paginate @quotes, class: 'mt-4'
 
-  div class="flex justify-center space-x-4 mt-8"
-    = link_to '利用規約', terms_of_service_path, class: 'text-sm text-gray-600 hover:underline'
-    = link_to 'プライバシーポリシー', privacy_policy_path, class: 'text-sm text-gray-600 hover:underline'
+    div class="flex justify-center space-x-4 mt-8"
+      = link_to '利用規約', terms_of_service_path, class: 'text-sm text-gray-600 hover:underline'
+      = link_to 'プライバシーポリシー', privacy_policy_path, class: 'text-sm text-gray-600 hover:underline'
+
+
