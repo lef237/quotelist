@@ -172,12 +172,12 @@ div class="theme-cupcake container mx-auto px-4"
           strong 引用一覧:
           = link_to 'このユーザーの引用一覧をCSVでダウンロード', user_path(@user, format: :csv), class: "text-primary"
 
-      div class="w-full md:w-2/3"
-        h2 class="text-2xl font-bold mb-4" Quotes
-
         div class="flex space-x-4 mb-4"
           = link_to 'ランダム表示', user_path(sort: 'random'), class: "btn btn-primary btn-sm"
           = link_to '人気順で表示', user_path(sort: 'popular'), class: "btn btn-primary btn-sm"
+
+      div class="w-full md:w-2/3"
+        h2 class="text-2xl font-bold mb-4" Quotes
 
         #quotes
           - if @message.present?
