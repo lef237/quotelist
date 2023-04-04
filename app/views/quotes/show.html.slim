@@ -1,8 +1,20 @@
-== render @quote
+/ == render @quote
 
-- if @quote.user == current_user
-  div
-    = link_to "Edit this quote", edit_quote_path(@quote)
-    = button_to "Destroy this quote", @quote, method: :delete, form: { data: { turbo: true, turbo_confirm: "削除してよろしいですか？" } }
-div
-  = link_to "Back to quotes", quotes_path
+/ - if @quote.user == current_user
+/   div
+/     = link_to "Edit this quote", edit_quote_path(@quote)
+/     = button_to "Destroy this quote", @quote, method: :delete, form: { data: { turbo: true, turbo_confirm: "削除してよろしいですか？" } }
+/ div
+/   = link_to "Back to quotes", quotes_path
+
+
+.container.mx-auto.px-4
+  .card.bg-white.rounded.shadow-lg.p-6.mb-4.max-w-md.mx-auto
+    == render @quote
+
+    - if @quote.user == current_user
+      div.flex.items-center.space-x-4
+        = link_to "Edit this quote", edit_quote_path(@quote), class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700"
+        = button_to "Destroy this quote", @quote, method: :delete, form: { data: { turbo: true, turbo_confirm: "削除してよろしいですか？" }, class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700" }
+  div.text-center.py-6
+    = link_to "Back to quotes", quotes_path, class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700"

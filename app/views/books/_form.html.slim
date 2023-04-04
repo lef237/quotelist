@@ -26,6 +26,7 @@
 /     = form.submit
 
 / @bookからbookに変えてデザイン入れた
+/ 他のページから読み込むときなど、本当にインスタンス変数を消してよかったのか、あとで精査する
 = form_with(model: book) do |form|
   - if book.errors.any?
     div.bg-red-200.text-red-800.p-4.rounded

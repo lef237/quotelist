@@ -1,6 +1,35 @@
+/ = form_with(model: @quote) do |form|
+/   - if @quote.errors.any?
+/     div style="color: red"
+/       h2 = "#{pluralize(@quote.errors.count, 'error')} prohibited this quote from being saved:"
+/       ul
+/         - @quote.errors.each do |error|
+/           li = error.full_message
+
+/   div
+/     = form.hidden_field :book_id, value: params[:book_id] || @quote.book_id
+
+/   div
+/     = form.label :sentence, style: "display: block"
+/     = form.text_area :sentence
+
+/   div
+/     = form.label :page_number, style: "display: block"
+/     = form.number_field :page_number
+
+/   / Coquoteボタン実装時にはhidden_fieldにする必要がある
+/   / おそらく「form.hidden_field :source_quote_id, value: @quote.id」みたいな感じなるはず
+/   div
+/     = form.label :source_quote_id, style: "display: block"
+/     = form.text_field :source_quote_id
+
+/   div
+/     = form.submit
+
+
 = form_with(model: @quote) do |form|
   - if @quote.errors.any?
-    div style="color: red"
+    div.text-red-600
       h2 = "#{pluralize(@quote.errors.count, 'error')} prohibited this quote from being saved:"
       ul
         - @quote.errors.each do |error|
@@ -9,19 +38,17 @@
   div
     = form.hidden_field :book_id, value: params[:book_id] || @quote.book_id
 
-  div
-    = form.label :sentence, style: "display: block"
-    = form.text_area :sentence
+  div.mb-4
+    = form.label :sentence, class: "block"
+    = form.text_area :sentence, class: "w-full p-2 border border-blue-400 rounded"
+
+  div.mb-4
+    = form.label :page_number, class: "block"
+    = form.number_field :page_number, class: "w-full p-2 border border-blue-400 rounded"
+
+  / div.mb-4
+  /   = form.label :source_quote_id, class: "block"
+  /   = form.text_field :source_quote_id, class: "w-full p-2 border border-blue-400 rounded"
 
   div
-    = form.label :page_number, style: "display: block"
-    = form.number_field :page_number
-
-  / Coquoteボタン実装時にはhidden_fieldにする必要がある
-  / おそらく「form.hidden_field :source_quote_id, value: @quote.id」みたいな感じなるはず
-  div
-    = form.label :source_quote_id, style: "display: block"
-    = form.text_field :source_quote_id
-
-  div
-    = form.submit
+    = form.submit class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700"

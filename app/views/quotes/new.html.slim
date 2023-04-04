@@ -1,8 +1,18 @@
-h1 New quote
+/ h1 New quote
 
-== render "form", quote: @quote
+/ == render "form", quote: @quote
 
-br
+/ br
 
-div
-  = link_to "Back to quotes", quotes_path
+/ div
+/   = link_to "Back to quotes", quotes_path
+
+
+.container.mx-auto.px-4
+  h1.text-4xl.font-semibold.text-center.py-8
+    | New quote
+
+  == render "form", quote: @quote
+
+  div.text-center.py-6
+    = link_to "Back to quotes", quotes_path, class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700"
