@@ -1,14 +1,36 @@
-h1 Books
+/ h1 Books
 
-#books
-  - if @books.present?
-    - @books.each do |book|
-      == render book
-      p
-        = link_to "Show this book", book
-    = paginate @books
-  - else
-    = @empty_message
+/ #books
+/   - if @books.present?
+/     - @books.each do |book|
+/       == render book
+/       p
+/         = link_to "Show this book", book
+/     = paginate @books
+/   - else
+/     = @empty_message
 
-- if current_user
-  = link_to "New book", new_book_path
+/ - if current_user
+/   = link_to "New book", new_book_path
+
+.container.mx-auto.px-4
+  h1.text-4xl.font-semibold.text-center.py-8
+    | Books
+
+  #books
+    - if @books.present?
+      .grid.grid-cols-1.sm:grid-cols-2.md:grid-cols-3.lg:grid-cols-4.gap-6
+        - @books.each do |book|
+          .card.bg-white.rounded.shadow-lg.p-6
+            == render book
+            br
+            p
+              = link_to "Show this book", book, class: "text-blue-600 hover:text-blue-800"
+      = paginate @books, class: "mt-6"
+    - else
+      .text-center.py-6
+        = @empty_message
+
+  - if current_user
+    .text-center.py-6
+      = link_to "New book", new_book_path, class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700"

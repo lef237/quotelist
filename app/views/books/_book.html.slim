@@ -9,6 +9,13 @@ div id="#{dom_id book}"
   p
     strong Author:
     =< book.author
+  / p
+  /   strong Information url:
+  /   =< book.information_url
+
   p
-    strong Information url:
-    =< book.information_url
+    strong URL:
+    - if book.information_url.present?
+      = link_to "書籍のURL", book.information_url, class: "text-blue-600 hover:text-blue-800", target: "_blank", rel: "noopener noreferrer"
+    - else
+      No information available

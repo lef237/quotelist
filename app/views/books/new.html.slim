@@ -1,8 +1,22 @@
-h1 New book
+/ h1 New book
+
+/ == render "form", book: @book
+
+/ br
+
+/ div
+/   = link_to "Back to books", books_path
+
+
+h1 class="text-3xl font-semibold mb-8"
+  | New book
 
 == render "form", book: @book
 
-br
+br class="my-8"
 
-div
-  = link_to "Back to books", books_path
+/ div class="flex justify-between items-center"
+/   = link_to "Back to books", books_path, class: "text-gray-700 hover:text-gray-900 font-medium"
+
+div class="flex items-center space-x-4"
+  = link_to "Back to books", books_path, class: "px-4 py-2 rounded-md text-gray-700 hover:text-gray-900 font-medium bg-gray-200 hover:bg-gray-300 transition-colors duration-300 ease-in-out"
