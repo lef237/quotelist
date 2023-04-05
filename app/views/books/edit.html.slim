@@ -1,11 +1,11 @@
-.container.mx-auto.px-4
+.container.mx-auto.px-4.max-w-3xl
   h1.text-4xl.font-semibold.text-center.py-8
-    | Editing book
+    | 書籍編集画面
 
   == render "form", book: @book
 
   br
 
   div.text-center.py-6
-    => link_to "Show this book", @book, class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700 mr-4"
-    =< link_to "Back to books", books_path, class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700"
+    => link_to "Show this book", @book, class: "bg-gray-600 text-white font-semibold px-3 py-1 rounded hover:bg-gray-700 mr-4"
+    =< link_to "Back to books", books_path, class: "bg-gray-600 text-white font-semibold px-3 py-1 rounded hover:bg-gray-700"

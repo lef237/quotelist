@@ -1,11 +1,10 @@
-/ h1 New book
+.container.mx-auto.px-4.max-w-3xl
+  h1.text-center.text-3xl.font-semibold.mb-8
+    | 書籍新規登録
 
-h1 class="text-3xl font-semibold mb-8"
-  | New book
+  == render "form", book: @book
 
-== render "form", book: @book
+  br.my-8
 
-br class="my-8"
-
-div class="flex items-center space-x-4"
-  = link_to "Back to books", books_path, class: "px-4 py-2 rounded-md text-gray-700 hover:text-gray-900 font-medium bg-gray-200 hover:bg-gray-300 transition-colors duration-300 ease-in-out"
+  div.flex.items-center.space-x-4
+    = link_to "Back to books", books_path, class: "px-4 py-2 rounded-md text-gray-700 hover:text-gray-900 font-medium bg-gray-200 hover:bg-gray-300 transition-colors duration-300 ease-in-out"

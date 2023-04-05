@@ -20,8 +20,8 @@ div class="theme-cupcake container mx-auto px-4"
         / ここのボタンのデザインを調整する。ログイン・ログアウトで少し違うので注意
         - if current_user
           div.flex.items-center.space-x-4
-            = link_to "書籍情報を編集する", edit_book_path(@book), class: 'bg-gray-500 text-white font-semibold px-4 py-1 rounded hover:bg-gray-600'
-            = button_to "書籍を削除する", @book, method: :delete, form: { data: { turbo: true, turbo_confirm: "削除してよろしいですか？" } }, class: 'bg-gray-700 text-white font-semibold px-4 py-1 rounded hover:bg-gray-800'
+            = link_to "書籍情報を編集する", edit_book_path(@book), class: 'bg-gray-500 text-white font-semibold px-3 py-1 rounded hover:bg-gray-600'
+            = button_to "書籍を削除する", @book, method: :delete, form: { data: { turbo: true, turbo_confirm: "削除してよろしいですか？" } }, class: 'bg-gray-700 text-white font-semibold px-3 py-1 rounded hover:bg-gray-800'
         br/
         div class="mt-4"
           = link_to '新しい引用を追加する', new_book_quote_path(@book), class: 'bg-green-900 text-white font-semibold px-7 py-3 rounded hover:bg-gray-700'

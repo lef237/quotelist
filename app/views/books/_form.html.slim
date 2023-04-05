@@ -7,20 +7,22 @@
           li = error.full_message
 
   div.my-4
-    = form.label :title, class: "block text-gray-700"
+    = form.label :title, "書名", class: "block text-gray-700"
     = form.text_field :title, class: "w-full mt-2 rounded p-2 border border-gray-300 focus:border-blue-500 focus:outline-none"
 
   div.my-4
-    = form.label :author, class: "block text-gray-700"
+    = form.label :author, "著者名", class: "block text-gray-700"
     = form.text_field :author, class: "w-full mt-2 rounded p-2 border border-gray-300 focus:border-blue-500 focus:outline-none"
 
   div.my-4
-    = form.label :information_url, class: "block text-gray-700"
+    = form.label :information_url, "書籍情報（外部リンク）", class: "block text-gray-700"
     = form.text_field :information_url, class: "w-full mt-2 rounded p-2 border border-gray-300 focus:border-blue-500 focus:outline-none"
 
   div.my-4
-    = form.label :avatar, class: "block text-gray-700"
+    = form.label :avatar, "書籍画像", class: "block text-gray-700"
     = form.file_field :avatar, class: "w-full mt-2 rounded p-2 border border-gray-300 focus:border-blue-500 focus:outline-none"
 
-  div.my-4
-    = form.submit class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700"
+  br/
+
+  div.my-4.text-center
+    = form.submit class: "bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
