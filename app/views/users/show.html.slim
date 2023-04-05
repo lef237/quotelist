@@ -1,33 +1,41 @@
-h1 UserPage
+div class="theme-cupcake container mx-auto px-4"
+  div class="shadow-md rounded-lg p-6"
+    div class="flex flex-col md:flex-row"
+      div class="w-full md:w-1/3 mb-8 md:mb-0"
+        h1 class="text-3xl font-bold mb-6" UserPage
 
-p MyID: #{@user.id}
-p MyName: #{@user.name}
-p MyPage: #{@user.profile_url}
+        / 後でCSSで調整する必要がある。object-fitのfillとか
+        div class="max-w-[300px]"
+          = image_tag @user.avatar.variant(resize_to_fit: [500, 500]), class: "w-full h-auto object-cover mb-4 rounded-full" if @user.avatar.attached?
 
-/ 後でCSSで調整する必要がある。object-fitのfillとか
-= image_tag @user.avatar.variant(resize_to_fit: [500, 500]), class: "w-[300px] h-[300px] object-fill" if @user.avatar.attached?
+        p class="text-lg mb-2" MyID: #{@user.id}
+        p class="text-lg mb-2" MyName: #{@user.name}
+        p class="text-lg mb-2" MyPage: #{@user.profile_url}
 
-= link_to 'ランダム表示', user_path(sort: 'random')
-= link_to '人気順で表示', user_path(sort: 'popular')
+        p class="font-bold mb-2"
+          strong 引用一覧:
+          = link_to 'このユーザーの引用一覧をCSVでダウンロード', user_path(@user, format: :csv), class: "text-primary"
 
-h2 Quotes
+        div class="flex space-x-4 mb-4"
+          = link_to 'ランダム表示', user_path(sort: 'random'), class: "btn btn-primary btn-sm"
+          = link_to '人気順で表示', user_path(sort: 'popular'), class: "btn btn-primary btn-sm"
 
-p
-  strong 引用一覧:
-  = link_to 'このユーザーの引用一覧をCSVでダウンロード', user_path(@user, format: :csv)
+      div class="w-full md:w-2/3"
+        h2 class="text-2xl font-bold mb-4" Quotes
 
-#quotes
-  - if @message.present?
-    p = @message
-  - else
-    - @quotes.each_with_index do |quote, index|
-      == render quote
-      - number_coquoted = quote.child_quotes.length
-      - if current_user
-        - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
-        = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json do
-      - else
-        = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json do
-      p
-        = link_to "Show this quote", quote
-    = paginate @quotes
+        #quotes
+          - if @message.present?
+            p class="text-lg mb-4 text-gray-700" = @message
+          - else
+            - @quotes.each_with_index do |quote, index|
+              div class="mb-4 p-4 bg-white shadow rounded"
+                == render quote
+                - number_coquoted = quote.child_quotes.length
+                - if current_user
+                  - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
+                  = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json do
+                - else
+                  = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json do
+                p class="mt-2"
+                  = link_to "Show this quote", quote, class: "text-primary font-semibold"
+            = paginate @quotes, class: "mt-4"

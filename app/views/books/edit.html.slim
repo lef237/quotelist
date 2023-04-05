@@ -1,10 +1,11 @@
-h1 Editing book
+.container.mx-auto.px-4
+  h1.text-4xl.font-semibold.text-center.py-8
+    | Editing book
 
-== render "form", book: @book
+  == render "form", book: @book
 
-br
+  br
 
-div
-  => link_to "Show this book", @book
-  '|
-  =< link_to "Back to books", books_path
+  div.text-center.py-6
+    => link_to "Show this book", @book, class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700 mr-4"
+    =< link_to "Back to books", books_path, class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700"

@@ -1,26 +1,26 @@
-= form_with(model: @book) do |form|
-  - if @book.errors.any?
-    div style="color: red"
-      h2 = "#{pluralize(@book.errors.count, 'error')} prohibited this book from being saved:"
+= form_with(model: book) do |form|
+  - if book.errors.any?
+    div.bg-red-200.text-red-800.p-4.rounded
+      h2 = "#{pluralize(book.errors.count, 'error')} prohibited this book from being saved:"
       ul
-        - @book.errors.each do |error|
+        - book.errors.each do |error|
           li = error.full_message
 
-  div
-    = form.label :title, style: "display: block"
-    = form.text_field :title
+  div.my-4
+    = form.label :title, class: "block text-gray-700"
+    = form.text_field :title, class: "w-full mt-2 rounded p-2 border border-gray-300 focus:border-blue-500 focus:outline-none"
 
-  div
-    = form.label :author, style: "display: block"
-    = form.text_field :author
+  div.my-4
+    = form.label :author, class: "block text-gray-700"
+    = form.text_field :author, class: "w-full mt-2 rounded p-2 border border-gray-300 focus:border-blue-500 focus:outline-none"
 
-  div
-    = form.label :information_url, style: "display: block"
-    = form.text_field :information_url
+  div.my-4
+    = form.label :information_url, class: "block text-gray-700"
+    = form.text_field :information_url, class: "w-full mt-2 rounded p-2 border border-gray-300 focus:border-blue-500 focus:outline-none"
 
-  div
-    = form.label :avatar, style: "display: block"
-    = form.file_field :avatar
+  div.my-4
+    = form.label :avatar, class: "block text-gray-700"
+    = form.file_field :avatar, class: "w-full mt-2 rounded p-2 border border-gray-300 focus:border-blue-500 focus:outline-none"
 
-  div
-    = form.submit
+  div.my-4
+    = form.submit class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700"

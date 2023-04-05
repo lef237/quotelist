@@ -8,13 +8,6 @@ class Quote < ApplicationRecord
   validates :sentence, length: { maximum: 300 }
 
   def self.popular
-    includes(:child_quotes)
-      .order(Arel.sql('COUNT(quotes.id) DESC'))
-      .left_joins(:child_quotes)
-      .group('quotes.id')
-  end
-
-  def self.user_popular
     joins('LEFT OUTER JOIN quotes AS child_quotes ON quotes.id = child_quotes.source_quote_id')
       .group('quotes.id')
       .select('quotes.*, COUNT(child_quotes.id) AS child_quotes_count')
