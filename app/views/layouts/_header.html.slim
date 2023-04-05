@@ -1,0 +1,65 @@
+/ header class="bg-white shadow-md px-4 py-2 relative w-full z-10"
+/   div class="container mx-auto"
+/     div class="flex justify-between items-center"
+/       = form_with url: books_path, method: :get, local: true, class: 'd-flex mt-4' do |f|
+/         = f.text_field :keyword, placeholder: '著者名 or 書籍名', class: 'input input-xs input-bordered'
+/         = f.submit "検索", class: "btn btn-xs btn-primary ml-2"
+/       - if user_signed_in?
+/         = link_to '登録情報編集', edit_user_registration_path, class: 'btn btn-xs btn-secondary'
+/         / link_toだとmethodの指定に関わらずgetが呼ばれてしまうため、button_toにしている
+/         = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-xs btn-error'
+/       - else
+/         = link_to 'ログイン', new_user_session_path, class: 'btn btn-xs btn-primary'
+/         = link_to '新規登録', new_user_registration_path, class: 'btn btn-xs btn-accent'
+
+
+/ header class="bg-white shadow-md px-4 py-2 relative w-full z-10"
+/   div class="container mx-auto"
+/     div class="flex justify-end items-center"
+/       = form_with url: books_path, method: :get, local: true, class: 'd-flex mt-4 mr-4' do |f|
+/         = f.text_field :keyword, placeholder: '著者名 or 書籍名', class: 'input input-xs input-bordered'
+/         = f.submit "検索", class: "btn btn-xs btn-primary ml-2"
+/       - if user_signed_in?
+/         = link_to '登録情報編集', edit_user_registration_path, class: 'btn btn-xs btn-secondary mr-2'
+/         / link_toだとmethodの指定に関わらずgetが呼ばれてしまうため、button_toにしている
+/         = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-xs btn-error'
+/       - else
+/         = link_to 'ログイン', new_user_session_path, class: 'btn btn-xs btn-primary mr-2'
+/         = link_to '新規登録', new_user_registration_path, class: 'btn btn-xs btn-accent'
+
+
+/ header class="bg-white shadow-md px-4 py-2 relative w-full z-10"
+/   div class="container mx-auto"
+/     div class="flex justify-between items-center"
+/       h1 class="text-xl font-semibold text-gray-700"
+/         | 引用箱
+/       div class="flex items-center"
+/         = form_with url: books_path, method: :get, local: true, class: 'd-flex mt-4 mr-4' do |f|
+/           = f.text_field :keyword, placeholder: '著者名 or 書籍名', class: 'input input-xs input-bordered'
+/           = f.submit "検索", class: "btn btn-xs btn-primary ml-2"
+/         - if user_signed_in?
+/           = link_to '登録情報編集', edit_user_registration_path, class: 'btn btn-xs btn-secondary mr-2'
+/           / link_toだとmethodの指定に関わらずgetが呼ばれてしまうため、button_toにしている
+/           = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-xs btn-error'
+/         - else
+/           = link_to 'ログイン', new_user_session_path, class: 'btn btn-xs btn-primary mr-2'
+/           = link_to '新規登録', new_user_registration_path, class: 'btn btn-xs btn-accent'
+
+
+header class="bg-white shadow-md px-4 py-2 relative w-full z-10"
+  div class="container mx-auto"
+    div class="flex justify-between items-center"
+      = link_to root_path, class: "text-xl font-semibold text-gray-700 hover:text-gray-900" do
+        h1
+          | 引用箱
+      div class="flex items-center"
+        = form_with url: books_path, method: :get, local: true, class: 'd-flex mt-4 mr-4' do |f|
+          = f.text_field :keyword, placeholder: '著者名 or 書籍名', class: 'input input-xs input-bordered'
+          = f.submit "検索", class: "btn btn-xs btn-primary ml-2"
+        - if user_signed_in?
+          = link_to '登録情報編集', edit_user_registration_path, class: 'btn btn-xs btn-secondary mr-2'
+          / link_toだとmethodの指定に関わらずgetが呼ばれてしまうため、button_toにしている
+          = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-xs btn-error'
+        - else
+          = link_to 'ログイン', new_user_session_path, class: 'btn btn-xs btn-primary mr-2'
+          = link_to '新規登録', new_user_registration_path, class: 'btn btn-xs btn-accent'
