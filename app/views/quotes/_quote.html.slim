@@ -1,21 +1,12 @@
 / このviewファイルについては、サービスの肝になるところなので、最後にデザインを考える
 / また最終形では、引用文とページ数と書籍名が表示されるようにする（quoted by XX people）はReactのコンポーネントで）
 div id="#{dom_id quote}"
-  p
-    strong QuoteID:
-    =< quote.id
-  p
-    strong User:
-    =< quote.user_id
-  p
-    strong Book:
-    =< quote.book_id
-  p
-    strong Sentence:
-    =< quote.sentence
-  p
-    strong Page number:
-    =< quote.page_number
-  p
-    strong Source quote:
-    =< quote.source_quote_id
+
+  p.text-2xl.font-serif.leading-relaxed
+    = quote.sentence
+
+  p.text-xl.font-serif.leading-snug.text-right
+    - if quote.page_number.present?
+      = "――――『#{quote.book.title}』 （P. #{quote.page_number}）"
+    - else
+      = "――――『#{quote.book.title}』"

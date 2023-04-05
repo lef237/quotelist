@@ -55,26 +55,28 @@ const CoquoteButton = ({
 
   return (
     <div>
-      <div className="flex items-center space-x-2">
-        <button
-          onClick={coquoted ? handleUnCoquote : handleCoquote}
-          className={`btn ${
-            coquoted ? "bg-gray-500 text-white" : "bg-gray-300 text-black"
-          } transition duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-400 hover:text-white shadow-md`}
-        >
-          {coquoted ? "UnCoquote" : "Coquote"}
-        </button>
-        <p className="mb-0 text-gray-800 text-lg font-semibold shadow-sm">
-          {numCoquoted}
-        </p>
-      </div>
-      <div>
-        <a
-          href={`/quotes/${quoteId}/coquote_users`}
-          className="text-gray-700 underline hover:text-gray-900 transition duration-300 ease-in-out"
-        >
-          {numCoquoted}人に引用されています
-        </a>
+      <div className="flex justify-between items-center">
+        <div>
+          <a
+            href={`/quotes/${quoteId}/coquote_users`}
+            className="text-gray-700 underline hover:text-gray-900 transition duration-300 ease-in-out"
+          >
+            {numCoquoted}人に引用されています
+          </a>
+        </div>
+        <div className="flex items-center space-x-2">
+          <button
+            onClick={coquoted ? handleUnCoquote : handleCoquote}
+            className={`btn ${
+              coquoted ? "bg-gray-500 text-white" : "bg-gray-300 text-black"
+            } transition duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-400 hover:text-white shadow-md`}
+          >
+            {coquoted ? "UnCoquote" : "Coquote"}
+          </button>
+          <p className="mb-0 text-gray-800 text-lg font-semibold shadow-sm">
+            {numCoquoted}
+          </p>
+        </div>
       </div>
     </div>
   );
