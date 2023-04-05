@@ -10,13 +10,14 @@ body class="text-gray-800 font-sans"
       - @quotes.each_with_index do |quote, index|
         .card.bg-white.rounded.shadow-lg.p-6.mb-4
           == render quote
+          br/
           - number_coquoted = quote.child_quotes.length
           - if current_user
             - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
             = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json do
           - else
             = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json do
-          p
-            = link_to "Show this quote", quote, class: "text-blue-600 hover:text-blue-800"
+          p.text-center
+            = link_to "Show this quote", quote, class: 'btn btn-sm btn-outline btn-rounded'
           br
     = paginate @quotes, class: "mt-6"
