@@ -62,10 +62,15 @@ const CoquoteButton = ({
         >
           {coquoted ? "UnCoquote" : "Coquote"}
         </button>
-        <p className="mb-0 text-blue-600 text-lg font-semibold">{numCoquoted}</p>
+        <p className="mb-0 text-blue-600 text-lg font-semibold">
+          {numCoquoted}
+        </p>
       </div>
       <div>
-        <a href={`/quotes/${quoteId}/coquote_users`} className="text-blue-600 underline hover:text-blue-800">
+        <a
+          href={`/quotes/${quoteId}/coquote_users`}
+          className="text-blue-600 underline hover:text-blue-800"
+        >
           {numCoquoted}人に引用されています
         </a>
       </div>

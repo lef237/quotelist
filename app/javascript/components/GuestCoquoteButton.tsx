@@ -10,7 +10,7 @@ const GuestCoquoteButton = ({ quoteId, numberCoquoted }: Props) => {
     alert("ログインしてください");
   };
 
-  console.log(numberCoquoted)
+  console.log(numberCoquoted);
 
   return (
     <div>
@@ -18,7 +18,9 @@ const GuestCoquoteButton = ({ quoteId, numberCoquoted }: Props) => {
         <button onClick={handleClick} className="btn btn-primary">
           COQUOTE
         </button>
-        <p className="mb-0 text-blue-600 text-lg font-semibold">{numberCoquoted}</p>
+        <p className="mb-0 text-blue-600 text-lg font-semibold">
+          {numberCoquoted}
+        </p>
       </div>
       <div>
         <a

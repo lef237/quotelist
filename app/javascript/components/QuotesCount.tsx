@@ -16,18 +16,11 @@ const QuotesCount = () => {
 
   console.log(data);
 
-  // return <div>引用の総数は {data.length} つです。</div>;
-
-  // return (
-  //   <div className="bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 p-6 rounded-lg shadow-md text-center">
-  //     <p className="text-3xl font-semibold text-white mb-2">引用の総数</p>
-  //     <p className="text-4xl font-bold text-white">{data.length} つ</p>
-  //   </div>
-  // );
-
   return (
     <div className="bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 rounded-lg shadow-md text-center">
-      <p className="text-1xl font-semibold text-white mb-2">Coquotesも含めた引用の総数</p>
+      <p className="text-1xl font-semibold text-white mb-2">
+        Coquotesも含めた引用の総数
+      </p>
       <p className="text-2xl font-bold text-white">{data.length} つ</p>
     </div>
   );

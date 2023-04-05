@@ -5,6 +5,9 @@ linters:
   TrailingWhitespace:
     enabled: false
 
+  RedundantDiv:
+    enabled: false
+
   RuboCop:
     ignored_cops:
       - Style/StringLiterals
