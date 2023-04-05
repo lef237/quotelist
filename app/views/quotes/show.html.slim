@@ -1,10 +1,12 @@
+h1.text-3xl.font-bold.text-gray-700.mb-8.text-center 引用ページ
+
 .container.mx-auto.px-4
   .card.bg-white.rounded.shadow-lg.p-6.mb-4.max-w-md.mx-auto
     == render @quote
 
     - if @quote.user == current_user
       div.flex.items-center.space-x-4
-        = link_to "Edit this quote", edit_quote_path(@quote), class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700"
-        = button_to "Destroy this quote", @quote, method: :delete, form: { data: { turbo: true, turbo_confirm: "削除してよろしいですか？" }, class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700" }
+        = link_to "Edit this quote", edit_quote_path(@quote), class: "bg-gray-600 text-white font-semibold px-4 py-2 rounded hover:bg-gray-700"
+        = button_to "Destroy this quote", @quote, method: :delete, form: { data: { turbo: true, turbo_confirm: "削除してよろしいですか？" }, class: "bg-gray-600 text-white font-semibold px-4 py-2 rounded hover:bg-gray-700" }
   div.text-center.py-6
-    = link_to "Back to quotes", quotes_path, class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700"
+    = link_to "Back to quotes", quotes_path, class: "bg-gray-600 text-white font-semibold px-4 py-2 rounded hover:bg-gray-700"
