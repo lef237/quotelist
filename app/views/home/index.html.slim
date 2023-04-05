@@ -133,8 +133,11 @@ div class="theme-cupcake container mx-auto px-4"
         = link_to 'ランダム表示', root_path(sort: 'random'), class: 'btn btn-sm btn-outline btn-rounded mr-2'
         = link_to '人気順で表示', root_path(sort: 'popular'), class: 'btn btn-sm btn-outline btn-rounded'
         br/
+
+        = link_to "#{@all_books.length}つの書籍が登録されています。", books_path, class: "text-green-600 hover:text-green-800"
+        br/
         / = link_to "#{@quotes.count}つの引用が投稿されています。", books_path
-        = link_to "#{@quotes.count}つの引用が投稿されています。", books_path, class: "text-brown-600 hover:text-brown-800"
+        = link_to "#{@all_quotes.length}つの引用が投稿されています。", quotes_path, class: "text-green-600 hover:text-green-800"
 
 
       div class="w-full md:w-2/3 md:pl-8 mt-8 md:mt-0"
