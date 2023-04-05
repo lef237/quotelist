@@ -30,14 +30,16 @@ div class="theme-cupcake container mx-auto px-4"
             - @quotes.each_with_index do |quote, index|
               div class="bg-white shadow-md rounded-lg p-4 mb-4"
                 == render quote
+                p
+                  = link_to "Show this quote", quote, class: 'btn btn-sm btn-outline btn-rounded'
+                br/
                 - number_coquoted = quote.child_quotes.length
                 - if current_user
                   - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
                   = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
                 - else
                   = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
-                p
-                  = link_to "Show this quote", quote, class: 'btn btn-sm btn-outline btn-rounded'
+
 
         = paginate @quotes, class: 'mt-4'
 
