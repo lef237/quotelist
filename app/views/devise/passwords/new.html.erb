@@ -1,4 +1,6 @@
-<h2>Forgot your password?</h2>
+<%
+=begin%>
+ <h2>Forgot your password?</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -10,6 +12,31 @@
 
   <div class="actions">
     <%= f.submit "Send me reset password instructions" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+<%
+=end%>
+
+
+
+
+
+
+
+<h2 class="text-2xl font-semibold mb-4">Forgot your password?</h2>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'space-y-4' }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email, class: 'block text-gray-700 font-semibold' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input input-bordered w-full' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Send me reset password instructions", class: 'btn btn-primary' %>
   </div>
 <% end %>
 
