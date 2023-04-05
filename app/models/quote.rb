@@ -7,14 +7,6 @@ class Quote < ApplicationRecord
   has_many :child_quotes, class_name: 'Quote', foreign_key: 'source_quote_id', inverse_of: :source_quote, dependent: :restrict_with_exception
   validates :sentence, length: { maximum: 300 }
 
-  # こちらのコントローラーではうまく動かない（人気順にならない）ことを確かめたのでコメントアウトした
-  # def self.popular
-  #   includes(:child_quotes)
-  #     .order(Arel.sql('COUNT(quotes.id) DESC'))
-  #     .left_joins(:child_quotes)
-  #     .group('quotes.id')
-  # end
-
   def self.popular
     joins('LEFT OUTER JOIN quotes AS child_quotes ON quotes.id = child_quotes.source_quote_id')
       .group('quotes.id')

@@ -1,32 +1,6 @@
-/ 下の４つは後で消す？
-/ = @quote.sentence
-/ = @quote.book.title
-/ = @quote.page_number
-/ = @quote.child_quotes.length
-
-/ h1 引用文
-
-/ == render @quote
-
-/ h2 引用元の本
-/ = link_to @quote.book.title, book_path(@quote.book)
-
-/ h2 引用したユーザーの一覧
-/ ul
-/   - @coquote_users.each do |user|
-/     li
-/       = link_to user.name, user_path(user)
-
-/ = link_to '引用に戻る', quote_path(@quote)
-
-
-
 .container.mx-auto.px-4
   h1.text-4xl.font-semibold.text-center.py-8
     | 引用文
-
-  / .card.bg-white.rounded.shadow-lg.p-6.mb-4
-  /   == render @quote
 
   .card.bg-white.rounded.shadow-lg.p-6.mb-4.max-w-lg.mx-auto
     == render @quote

@@ -1,13 +1,3 @@
-/ == render @quote
-
-/ - if @quote.user == current_user
-/   div
-/     = link_to "Edit this quote", edit_quote_path(@quote)
-/     = button_to "Destroy this quote", @quote, method: :delete, form: { data: { turbo: true, turbo_confirm: "削除してよろしいですか？" } }
-/ div
-/   = link_to "Back to quotes", quotes_path
-
-
 .container.mx-auto.px-4
   .card.bg-white.rounded.shadow-lg.p-6.mb-4.max-w-md.mx-auto
     == render @quote
