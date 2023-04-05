@@ -10,7 +10,7 @@
             == render book
             br
             p
-              = link_to "Show this book", book, class: "text-blue-600 hover:text-blue-800"
+              = link_to "Show this book", book, class: "text-gray-600 hover:text-gray-800"
       = paginate @books, class: "mt-6"
     - else
       .text-center.py-6
@@ -18,4 +18,4 @@
 
   - if current_user
     .text-center.py-6
-      = link_to "New book", new_book_path, class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700"
+      = link_to "New book", new_book_path, class: "bg-gray-600 text-white font-semibold px-4 py-2 rounded hover:bg-gray-700"
