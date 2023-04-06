@@ -1,8 +1,16 @@
 h1.text-3xl.font-bold.text-gray-700.mb-8.text-center 引用ページ
 
+- content_for :title, "『引用箱』で引用されました！"
+- content_for :description, @quote.sentence
+
 .container.mx-auto.px-4
   .card.bg-white.rounded.shadow-lg.p-6.mb-4.max-w-md.mx-auto
     == render @quote
+
+    br/
+
+    a.twitter-share-button href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false" Tweet
+    script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"
 
     br/
 
