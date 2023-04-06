@@ -11,3 +11,6 @@ require:
 
 Rails/FilePath:
   Enabled: false
+
+Layout/LineLength:
+  Max: 200

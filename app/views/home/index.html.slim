@@ -17,6 +17,9 @@ div class="theme-cupcake container mx-auto px-4"
         br/
         p.text-center
           = link_to "現在、#{@all_quotes.length}個の引用が投稿されています。", quotes_path, class: "text-blue-400 hover:text-blue-800"
+        br/
+        a.twitter-share-button href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false" Tweet
+        script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"
 
       div class="w-full md:w-2/3 md:pl-8 mt-8 md:mt-0"
         h2 class="text-2xl font-semibold mb-2" 引用紹介
