@@ -9,6 +9,8 @@ html
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
   body data-controller="reload"
+    - ogp_tags.each do |property, content|
+      meta property=property content=content
     == render "layouts/header"
     p style="color: green"
       = notice
