@@ -15,4 +15,4 @@ div id="#{dom_id book}"
     - if book.information_url.present?
       = link_to "本の外部リンクです", book.information_url, class: "text-green-600 hover:text-green-800", target: "_blank", rel: "noopener noreferrer"
     - else
-      | 書籍情報はありません
+      | 外部リンクはありません

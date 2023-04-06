@@ -5,6 +5,7 @@ div class="theme-cupcake container mx-auto px-4"
         p
           = link_to @book.information_url do
             =< image_tag @book.avatar.variant(resize_to_limit: [700, 700]), class: "w-[283px] h-[400px] object-contain" if @book.avatar.attached?
+        br/
 
         p.text-4xl.font-serif
           = "『#{@book.title}』"
@@ -14,7 +15,7 @@ div class="theme-cupcake container mx-auto px-4"
           - if @book.information_url.present?
             = link_to "書籍情報ページ", @book.information_url, class: "text-base underline"
           - else
-            | 書籍情報はありません
+            | 外部リンクはありません
         br/
 
         / ここのボタンのデザインを調整する。ログイン・ログアウトで少し違うので注意
@@ -37,10 +38,10 @@ div class="theme-cupcake container mx-auto px-4"
         br/
         br/
         div class="mt-4"
-          = link_to "Back to books", books_path, class: 'bg-gray-400 text-white font-semibold px-4 py-2 rounded hover:bg-gray-500'
+          = link_to "書籍一覧", books_path, class: 'bg-gray-400 text-white font-semibold px-4 py-2 rounded hover:bg-gray-500'
 
       div class="w-full md:w-2/3 md:pl-8"
-        h1 class="text-3xl font-bold mt-8 mb-4" Quotes
+        h1 class="text-3xl font-bold mt-8 mb-4" 引用一覧
 
         div class="mt-4"
           = link_to 'ランダム表示', book_path(sort: 'random'), class: 'btn btn-sm btn-outline btn-rounded mr-2'
@@ -61,6 +62,6 @@ div class="theme-cupcake container mx-auto px-4"
                   = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
                 - else
                   = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
-                p
-                  = link_to "Show this quote", quote, class: 'btn btn-sm btn-outline btn-rounded'
+                p.text-center
+                  = link_to "この引用を表示する", quote, class: 'btn btn-sm btn-outline btn-rounded'
             = paginate @quotes, class: 'mt-4'

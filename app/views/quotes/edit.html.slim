@@ -1,9 +1,9 @@
-.container.mx-auto.px-4
+.container.mx-auto.px-4.max-w-lg
   h1.text-4xl.font-semibold.text-center.py-8
-    | Editing quote
+    | 引用編集画面
 
   == render "form", quote: @quote
 
   div.text-center.py-6
-    => link_to "Show this quote", @quote, class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700"
-    =< link_to "Back to quotes", quotes_path, class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700"
+    => link_to "Show this quote", @quote, class: "bg-gray-600 text-white font-semibold text-sm px-3 py-1 rounded hover:bg-gray-700 mr-2"
+    =< link_to "Back to quotes", :back, class: "bg-gray-600 text-white font-semibold text-sm px-3 py-1 rounded hover:bg-gray-700"

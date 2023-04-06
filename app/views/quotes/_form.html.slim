@@ -10,12 +10,14 @@
     = form.hidden_field :book_id, value: params[:book_id] || @quote.book_id
 
   div.mb-4
-    = form.label :sentence, class: "block"
-    = form.text_area :sentence, class: "w-full p-2 border border-blue-400 rounded"
+    = form.label :sentence, "引用文（300文字まで）", class: "block"
+    = form.text_area :sentence, class: "w-full p-2 border border-blue-400 rounded", rows: 8
 
   div.mb-4
-    = form.label :page_number, class: "block"
+    = form.label :page_number, "ページ数（任意）", class: "block"
     = form.number_field :page_number, class: "w-full p-2 border border-blue-400 rounded"
 
-  div
-    = form.submit class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700"
+  br/
+
+  div.text-center
+    = form.submit "投稿する", class: "bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700"
