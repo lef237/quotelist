@@ -17,4 +17,5 @@
   .card.bg-white.rounded.shadow-lg.p-6.mb-4.max-w-lg.mx-auto
     == render @quote
   div.text-center.py-6
-    = link_to '引用に戻る', quote_path(@quote), class: "bg-gray-600 text-white font-semibold px-4 py-2 rounded hover:bg-gray-700"
+    = link_to '戻る', :back, class: "bg-gray-600 text-white font-semibold px-4 py-2 rounded hover:bg-gray-700 mr-4"
+    = link_to '引用ページ', quote_path(@quote), class: "bg-gray-600 text-white font-semibold px-4 py-2 rounded hover:bg-gray-700"

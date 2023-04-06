@@ -11,7 +11,7 @@ body class="text-gray-800 font-sans"
         .card.bg-white.rounded.shadow-lg.p-6.mb-4
           == render quote
           br/
-          - number_coquoted = quote.child_quotes.length
+          - number_coquoted = quote.child_quotes.length + 1
           - if current_user
             - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
             = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json do

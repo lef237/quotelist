@@ -33,7 +33,7 @@ div class="theme-cupcake container mx-auto px-4"
                 == render quote
                 br/
                 br/
-                - number_coquoted = quote.child_quotes.length
+                - number_coquoted = quote.child_quotes.length + 1
                 - if current_user
                   - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
                   = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
