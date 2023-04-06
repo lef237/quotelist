@@ -1,3 +1,6 @@
+- content_for :title, "『引用箱』で引用されました！"
+- content_for :description, @quote.sentence
+
 .container.mx-auto.px-4
   h1.text-4xl.font-semibold.text-center.py-8
     | 引用したユーザーの一覧
@@ -16,6 +19,8 @@
     | 引用文
   .card.bg-white.rounded.shadow-lg.p-6.mb-4.max-w-lg.mx-auto
     == render @quote
+    a.twitter-share-button href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false" Tweet
+    script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"
   div.text-center.py-6
     = link_to '戻る', :back, class: "bg-gray-600 text-white font-semibold px-4 py-2 rounded hover:bg-gray-700 mr-4"
     = link_to '引用ページ', quote_path(@quote), class: "bg-gray-600 text-white font-semibold px-4 py-2 rounded hover:bg-gray-700"
