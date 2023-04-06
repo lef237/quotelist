@@ -8,7 +8,7 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
-  body
+  body data-controller="reload"
     == render "layouts/header"
     p style="color: green"
       = notice
