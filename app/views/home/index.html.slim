@@ -40,7 +40,7 @@ div class="theme-cupcake container mx-auto px-4"
                 - else
                   = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
                 p.text-center
-                  = link_to "Show this quote", quote, class: 'btn btn-sm btn-outline btn-rounded'
+                  = link_to "この引用を表示する", quote, class: 'btn btn-sm btn-outline btn-rounded'
 
         = paginate @quotes, class: 'mt-4'
 
