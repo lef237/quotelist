@@ -49,7 +49,7 @@ const CoquoteButton = ({
 
     if (!response.ok) {
       console.log(`子引用があるので削除できません。`);
-      window.alert(`子引用があるので削除できません。`);
+      window.alert(`別のページで同じボタンを押しています。画面を更新してください。`);
     }
   };
 
@@ -61,7 +61,7 @@ const CoquoteButton = ({
             href={`/quotes/${quoteId}/coquote_users`}
             className="text-gray-700 underline hover:text-gray-900 transition duration-300 ease-in-out"
           >
-            {numCoquoted}人に引用されています
+            {numCoquoted}人が引用しています
           </a>
         </div>
         <div className="flex items-center space-x-2">

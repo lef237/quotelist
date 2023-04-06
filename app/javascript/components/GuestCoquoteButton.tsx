@@ -19,7 +19,7 @@ const GuestCoquoteButton = ({ quoteId, numberCoquoted }: Props) => {
           href={`/quotes/${quoteId}/coquote_users`}
           className="text-gray-600 underline hover:text-gray-800"
         >
-          {numberCoquoted}人に引用されています
+          {numberCoquoted}人が引用しています
         </a>
       </div>
       <div className="flex items-center space-x-2">
