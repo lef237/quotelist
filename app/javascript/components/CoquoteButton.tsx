@@ -49,7 +49,9 @@ const CoquoteButton = ({
 
     if (!response.ok) {
       console.log(`子引用があるので削除できません。`);
-      window.alert(`別のページで同じボタンを押しています。画面を更新してください。`);
+      window.alert(
+        `別のページで同じボタンを押しています。画面を更新してください。`
+      );
     }
   };
 
