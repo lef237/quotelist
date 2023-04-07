@@ -29,7 +29,6 @@
 - Prettier 2.8.4
 - Hotwire
   - Turbo 1.4.0
-  - Stimulus 1.2.1
 - RSpec 6.0.1
   - Factory_bot 6.2.1
 - PostgreSQL
@@ -43,8 +42,31 @@
 ### セットアップ
 ```
 git clone https://github.com/lef237/quotelist.git
+cd quotelist
 bin/setup
 yarn
+```
+
+### ActiveStorageを使えるようにするための設定
+#### libvipsを使う場合
+macOSの場合
+```
+brew install vips
+```
+Debianの場合
+```
+sudo apt install libvips
+```
+
+#### ImageMagickを使う場合
+
+macOSの場合
+```
+brew install imagemagick
+```
+Debianの場合
+```
+sudo apt install imagemagick
 ```
 
 ### 起動コマンド
