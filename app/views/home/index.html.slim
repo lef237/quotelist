@@ -9,6 +9,8 @@ div class="theme-cupcake container mx-auto px-4"
         h1 class="text-4xl font-bold mb-4"
           | 引用箱
 
+        = image_tag "logo.png", alt: "ロゴ", class: "w-400 h-400"
+
         div class="bg-gray-100 rounded-lg p-6 mb-8"
           p class="text-lg md:text-xl font-semibold text-gray-700 mb-4"
             | 未知の書籍と出会う切っ掛けとして、色んな本の引用を閲覧・紹介することができます！
@@ -16,14 +18,13 @@ div class="theme-cupcake container mx-auto px-4"
             br/
             | ぜひ、色んな引用をクリックして、お気に入りの本を見つけてみましょう📚🔍
 
-        p.text-center
-          = link_to "現在、#{@all_books.length}個の書籍が登録されています。", books_path, class: "text-blue-400 hover:text-blue-800"
-        br/
-        p.text-center
-          = link_to "現在、#{@all_quotes.length}個の引用が投稿されています。", quotes_path, class: "text-blue-400 hover:text-blue-800"
-        br/
         a.twitter-share-button href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false" Tweet
         script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"
+
+        p.text-center
+          = link_to "現在、#{@all_books.length}個の書籍が登録されています。", books_path, class: "text-blue-400 hover:text-blue-800"
+        p.text-center
+          = link_to "現在、#{@all_quotes.length}個の引用が投稿されています。", quotes_path, class: "text-blue-400 hover:text-blue-800"
 
       div class="w-full md:w-2/3 md:pl-8 mt-8 md:mt-0"
         h2 class="text-2xl font-semibold mb-2" 引用紹介
