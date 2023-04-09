@@ -14,3 +14,13 @@ Rails/FilePath:
 
 Layout/LineLength:
   Max: 200
+
+RSpec/MultipleExpectations:
+  Max: 10
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+RSpec/ExampleLength:
+  Max: 10

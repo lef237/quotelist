@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :book do
-    title { 'MyString' }
-    author { 'MyString' }
-    information_url { 'MyString' }
+    title { Faker::Book.title }
+    author { Faker::Book.author }
+    information_url { Faker::Internet.url(host: 'example.com', path: "/book/#{Faker::Number.unique.number(digits: 10)}") }
   end
 end

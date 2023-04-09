@@ -2,10 +2,10 @@
 
 FactoryBot.define do
   factory :quote do
-    user { nil }
-    book { nil }
-    sentence { 'MyText' }
-    page_number { 1 }
-    source_quote { nil }
+    user
+    book
+    sentence { Faker::Lorem.sentence }
+    page_number { Faker::Number.between(from: 1, to: 500) }
+    source_quote_id { nil }
   end
 end
