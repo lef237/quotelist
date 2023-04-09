@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :book do
-    title { 'MyString' }
-    author { 'MyString' }
-    information_url { 'MyString' }
+    title { 'すべてがFになる' }
+    author { '森博嗣' }
+    information_url { 'https://bookclub.kodansha.co.jp/product?item=0000198009' }
   end
 end

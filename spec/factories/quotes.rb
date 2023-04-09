@@ -2,10 +2,10 @@
 
 FactoryBot.define do
   factory :quote do
-    user { nil }
-    book { nil }
-    sentence { 'MyText' }
-    page_number { 1 }
+    user { 1 }
+    book { 1 }
+    sentence { 'テストテストテスト' }
+    page_number { 123 }
     source_quote { nil }
   end
 end

@@ -14,3 +14,6 @@ Rails/FilePath:
 
 Layout/LineLength:
   Max: 200
+
+RSpec/MultipleExpectations:
+  Max: 10
