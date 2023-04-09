@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'validations' do
-    subject { build(:user) }
+    subject(:user) { build(:user) }
 
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
@@ -15,15 +15,15 @@ RSpec.describe User, type: :model do
       let(:invalid_file) { fixture_file_upload(Rails.root.join('spec', 'fixtures', 'invalid_file.txt'), 'text/plain') }
 
       it 'validates file size' do
-        subject.avatar.attach(large_image)
-        expect(subject).not_to be_valid
-        expect(subject.errors.full_messages).to include('Avatar ファイルサイズは1MB以下にしてください')
+        user.avatar.attach(large_image)
+        expect(user).not_to be_valid
+        expect(user.errors.full_messages).to include('Avatar ファイルサイズは1MB以下にしてください')
       end
 
       it 'validates file format' do
-        subject.avatar.attach(invalid_file)
-        expect(subject).not_to be_valid
-        expect(subject.errors.full_messages).to include('Avatar jpg, jpeg, pngのどれかの形式でアップロードしてください')
+        user.avatar.attach(invalid_file)
+        expect(user).not_to be_valid
+        expect(user.errors.full_messages).to include('Avatar jpg, jpeg, pngのどれかの形式でアップロードしてください')
       end
     end
   end
@@ -41,11 +41,11 @@ RSpec.describe User, type: :model do
     let(:user) { create(:user, password: 'mypassword', password_confirmation: 'mypassword') }
 
     it 'authenticates the user with a correct password' do
-      expect(user.valid_password?('mypassword')).to be_truthy
+      expect(user).to be_valid_password('mypassword')
     end
 
     it 'does not authenticate the user with an incorrect password' do
-      expect(user.valid_password?('wrongpassword')).to be_falsey
+      expect(user).not_to be_valid_password('wrongpassword')
     end
   end
 end
