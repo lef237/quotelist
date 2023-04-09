@@ -49,19 +49,17 @@ RSpec.describe Book, type: :model do
   end
 
   describe 'scopes' do
-    before do
-      @book1 = create(:book, title: 'ゼロからわかるRuby超入門', author: '五十嵐邦明')
-      @book2 = create(:book, title: 'プロを目指す人のためのRuby入門', author: '伊藤淳一')
-      @book3 = create(:book, title: 'パーフェクトRuby on Rails', author: 'すがわらまさのり')
-    end
+    let!(:book1) { create(:book, title: 'ゼロからわかるRuby超入門', author: '五十嵐邦明') }
+    let!(:book2) { create(:book, title: 'プロを目指す人のためのRuby入門', author: '伊藤淳一') }
+    let!(:book3) { create(:book, title: 'パーフェクトRuby on Rails', author: 'すがわらまさのり') }
 
     it 'returns books matching the search keyword' do
-      expect(Book.search('Ruby')).to match_array([@book1, @book2, @book3])
-      expect(Book.search('五十嵐')).to match_array([@book1])
+      expect(described_class.search('Ruby')).to contain_exactly(book1, book2, book3)
+      expect(described_class.search('五十嵐')).to contain_exactly(book1)
     end
 
     it 'returns books in descending order of creation' do
-      expect(Book.search('Ruby')).to eq([@book3, @book2, @book1])
+      expect(described_class.search('Ruby')).to eq([book3, book2, book1])
     end
   end
 end
