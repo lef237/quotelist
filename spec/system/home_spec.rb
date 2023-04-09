@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Home', type: :system do
   let!(:user) { create(:user) }
   let!(:book) { create(:book) }
-  let!(:quote) { create(:quote, user: user, book: book) }
+  let!(:quote) { create(:quote, user:, book:) }
 
   before do
     driven_by(:rack_test)

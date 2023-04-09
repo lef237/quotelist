@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Books index', type: :system do
@@ -20,7 +22,7 @@ RSpec.describe 'Books index', type: :system do
       books.each do |book|
         expect(page).to have_content(book.title)
         expect(page).to have_content(book.author)
-        expect(page).to have_link("この書籍を見る", href: book_path(book))
+        expect(page).to have_link('この書籍を見る', href: book_path(book))
       end
     end
 
@@ -50,7 +52,7 @@ RSpec.describe 'Books index', type: :system do
       books[1..10].each do |book|
         expect(page).to have_content(book.title)
         expect(page).to have_content(book.author)
-        expect(page).to have_link("この書籍を見る", href: book_path(book))
+        expect(page).to have_link('この書籍を見る', href: book_path(book))
       end
     end
 

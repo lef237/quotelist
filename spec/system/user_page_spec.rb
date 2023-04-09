@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'UserPage', type: :system do
   let!(:user) { create(:user) }
   let!(:book) { create(:book) }
-  let!(:quote) { create(:quote, user: user, book: book) }
+  let!(:quote) { create(:quote, user:, book:) }
 
   before do
     driven_by(:rack_test)
@@ -29,8 +31,8 @@ RSpec.describe 'UserPage', type: :system do
   end
 
   it 'displays quote details' do
-    within("#quotes") do
-      expect(page).to have_link("この引用を表示する")
+    within('#quotes') do
+      expect(page).to have_link('この引用を表示する')
     end
   end
 end
