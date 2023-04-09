@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :book do
-    title { 'すべてがFになる' }
-    author { '森博嗣' }
-    information_url { 'https://bookclub.kodansha.co.jp/product?item=0000198009' }
+    title { Faker::Book.title }
+    author { Faker::Book.author }
+    information_url { Faker::Internet.url(host: 'example.com', path: "/book/#{Faker::Number.unique.number(digits: 10)}") }
   end
 end
