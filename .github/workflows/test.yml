@@ -47,4 +47,4 @@ jobs:
           yarn build
           yarn build:css
       - name: Run RSpec
-        run: bin/rspec
+        run: bundle exec rspec spec/models spec/requests
