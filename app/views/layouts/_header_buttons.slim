@@ -1,0 +1,22 @@
+/ - if user_signed_in?
+/   = link_to 'マイページ', user_path(current_user), class: 'btn btn-xs bg-blue-800 hover:bg-blue-900 text-white mr-2'
+/   = link_to '登録情報編集', edit_user_registration_path, class: 'btn btn-xs bg-gray-600 hover:bg-gray-700 text-white mr-2'
+/   / link_toだとmethodの指定に関わらずgetが呼ばれてしまうため、button_toにしている
+/   = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-xs bg-gray-800 hover:bg-gray-900 text-white'
+/ - else
+/   = link_to 'ログイン', new_user_session_path, class: 'btn btn-xs bg-gray-600 hover:bg-gray-700 text-white mr-2'
+/   = link_to '新規登録', new_user_registration_path, class: 'btn btn-xs bg-gray-500 hover:bg-gray-600 text-white'
+
+
+nav data-controller="dropdown"
+  button data-action="dropdown#toggleMenu" class="btn btn-xs bg-gray-400 hover:bg-gray-500 text-white md:hidden"
+    i class="fas fa-bars"
+  div data-dropdown-target="menu" class="hidden md:flex space-x-2"
+    / ここに各種ボタンを追加
+    - if user_signed_in?
+      = link_to 'マイページ', user_path(current_user), class: 'btn btn-xs bg-blue-800 hover:bg-blue-900 text-white mr-2'
+      = link_to '登録情報編集', edit_user_registration_path, class: 'btn btn-xs bg-gray-600 hover:bg-gray-700 text-white mr-2'
+      = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-xs bg-gray-800 hover:bg-gray-900 text-white'
+    - else
+      = link_to 'ログイン', new_user_session_path, class: 'btn btn-xs bg-gray-600 hover:bg-gray-700 text-white mr-2'
+      = link_to '新規登録', new_user_registration_path, class: 'btn btn-xs bg-gray-500 hover:bg-gray-600 text-white'
