@@ -35,10 +35,6 @@ RSpec.describe 'CoquoteUsers', type: :system do
   end
 
   it 'displays a back button' do
-    # このままだと`href: :back`がエラーを起こす
-    # expect(page).to have_link('戻る', href: :back)
-
-    # 戻るボタンをクリックできることを確認する
     click_link '戻る'
   end
 end
