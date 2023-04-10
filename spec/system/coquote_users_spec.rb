@@ -5,12 +5,12 @@ require 'rails_helper'
 RSpec.describe 'CoquoteUsers', type: :system do
   let!(:user) { create(:user) }
   let!(:book) { create(:book) }
-  let!(:quote) { create(:quote, user: user, book: book) }
+  let!(:quote) { create(:quote, user:, book:) }
   let!(:coquote_users) { create_list(:user, 3) }
 
   before do
     coquote_users.each do |coquote_user|
-      create(:quote, user: coquote_user, book: book, source_quote: quote)
+      create(:quote, user: coquote_user, book:, source_quote: quote)
     end
     driven_by(:rack_test)
     visit coquote_users_quote_path(quote)
