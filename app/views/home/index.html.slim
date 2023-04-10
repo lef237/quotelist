@@ -28,11 +28,7 @@ div class="theme-cupcake container mx-auto px-4 max-w-3xl"
 
     br/
 
-    / p.text-center.mb-4
-    /   = link_to "書籍一覧ページ", books_path, class: "text-blue-700 hover:text-blue-800"
-
     h2 class="text-2xl font-semibold mb-2" 引用紹介
-    / br/ を削除し、margin-bottom を追加
     div class="flex items-center space-x-2 mb-4"
       = link_to 'ランダム表示', root_path(sort: 'random'), class: 'btn btn-sm btn-outline btn-rounded'
       = link_to '人気順で表示', root_path(sort: 'popular'), class: 'btn btn-sm btn-outline btn-rounded'
@@ -56,13 +52,8 @@ div class="theme-cupcake container mx-auto px-4 max-w-3xl"
 
     = paginate @quotes, class: 'mt-4'
 
-    / p.text-center.mb-4
-    /   = link_to "書籍一覧ページ", books_path, class: "text-blue-400 hover:text-blue-800"
-
     p.text-center.mb-4
       = link_to "現在、#{@all_books.length}個の書籍が登録されています。", books_path, class: "text-blue-400 hover:text-blue-800"
-    / p.text-center.mb-4
-    /   = link_to "現在、#{@all_quotes.length}個の引用が投稿されています。", quotes_path, class: "text-blue-400 hover:text-blue-800"
 
     #quotescount
 
