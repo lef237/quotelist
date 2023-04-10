@@ -5,7 +5,7 @@ type Props = {
   userId: number;
 };
 
-const HeaderButton = ({isLogin, userId}: Props) => {
+const HeaderButton = ({ isLogin, userId }: Props) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -18,9 +18,10 @@ const HeaderButton = ({isLogin, userId}: Props) => {
     form.submit();
   };
 
-  const csrfToken = document
-    .querySelector('meta[name="csrf-token"]')
-    ?.getAttribute("content") || "";
+  const csrfToken =
+    document
+      .querySelector('meta[name="csrf-token"]')
+      ?.getAttribute("content") || "";
 
   return (
     <header className="">
@@ -54,7 +55,11 @@ const HeaderButton = ({isLogin, userId}: Props) => {
                     onSubmit={handleLogout}
                   >
                     <input type="hidden" name="_method" value="delete" />
-                    <input type="hidden" name="authenticity_token" value={csrfToken} />
+                    <input
+                      type="hidden"
+                      name="authenticity_token"
+                      value={csrfToken}
+                    />
                     <input
                       type="submit"
                       value="ログアウト"
