@@ -3,23 +3,22 @@
 - content_for :keywords, '引用, 引用箱, 共有, 本, 書籍, お気に入り, リスト, quote, Quote, QuoteList, cite, Rails, Rails 7, React, Hotwire'
 
 div class="theme-cupcake container mx-auto px-4"
-  div class="shadow-md rounded-lg p-6"
+  div class="rounded-lg p-6"
     div class="flex flex-col md:flex-row"
       div class="w-full md:w-1/3 mb-8 md:mb-0"
-        h1 class="text-3xl font-bold mb-6" ユーザーページ
+        h1 class="text-3xl font-bold mb-6" #{@user.name}
 
-        / 後でCSSで調整する必要がある。object-fitのfillとか
         div class="max-w-[300px]"
           = image_tag @user.avatar.variant(resize_to_fit: [500, 500]), class: "w-full h-auto object-cover mb-4 rounded-full" if @user.avatar.attached?
 
-        p class="text-4xl font-extrabold mb-4"
-          = @user.name
         p.text-base.mb-2
           - if @user.profile_url.present?
             = link_to "ユーザーのURL", @user.profile_url, class: "text-base underline"
           - else
             | 外部リンクがありません
         br/
+        a.twitter-share-button href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false" Tweet
+        script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"
         br/
         p class="font-bold mb-2"
           strong CSV:
@@ -51,5 +50,5 @@ div class="theme-cupcake container mx-auto px-4"
                 - else
                   = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json do
                 p class="mt-2 text-center"
-                  = link_to "この引用を表示する", quote, class: 'btn btn-sm btn-outline btn-rounded'
+                  = link_to "この引用を表示する", coquote_users_quote_path(quote), class: 'btn btn-sm btn-outline btn-rounded'
             = paginate @quotes, class: "mt-4"

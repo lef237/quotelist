@@ -4,13 +4,17 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'space-y-4' }) do |f| %>
     <div class="field">
       <%= f.label :email, class: 'block text-gray-700 font-semibold' %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input input-bordered w-full' %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'bg-white border border-gray-300 w-full p-2' %>
     </div>
 
     <div class="field">
       <%= f.label :password, 'パスワード', class: 'block text-gray-700 font-semibold' %>
-      <%= f.password_field :password, autocomplete: "current-password", class: 'input input-bordered w-full' %>
+      <%= f.password_field :password, autocomplete: "current-password", class: 'bg-white border border-gray-300 w-full p-2' %>
     </div>
+
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%= link_to "パスワードを忘れた場合", new_password_path(resource_name) %><br />
+    <% end %>
 
     <% if devise_mapping.rememberable? %>
       <div class="field flex items-center">
@@ -20,7 +24,7 @@
     <% end %>
 
     <div class="actions">
-      <%= f.submit "Log in", class: 'bg-gray-600 text-white font-semibold px-4 py-2 rounded hover:bg-gray-700 transition-colors duration-300 ease-in-out' %>
+      <%= f.submit "ログインする", class: 'bg-gray-600 text-white font-semibold px-4 py-2 rounded hover:bg-gray-700 transition-colors duration-300 ease-in-out' %>
     </div>
   <% end %>
 

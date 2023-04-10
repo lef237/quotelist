@@ -2,58 +2,60 @@
 - content_for :description, '未知の書籍と出会う切っ掛けとして、色んな本の引用を閲覧・紹介することができます！ぜひ、色んな引用をクリックして、お気に入りの本を見つけてみましょう'
 - content_for :keywords, '引用, 引用箱, 共有, 本, 書籍, お気に入り, リスト, quote, Quote, QuoteList, cite, Rails, Rails 7, React, Hotwire'
 
-div class="theme-cupcake container mx-auto px-4"
-  div class="shadow-md rounded-lg p-6"
-    div class="flex flex-col md:flex-row"
-      div class="w-full md:w-1/3"
-        h1 class="text-4xl font-bold mb-4"
-          | 引用箱
+div class="theme-cupcake container mx-auto px-4 max-w-3xl"
+  div class="p-6 flex flex-col items-center"
+    h1 class="text-4xl font-bold mb-4 hidden"
+      | 引用箱
 
-        = image_tag "logo.png", alt: "ロゴ", class: "w-400 h-400"
+    = image_tag "logo.png", alt: "ロゴ", class: "w-60 h-60"
 
-        div class="bg-gray-100 rounded-lg p-6 mb-8"
-          p class="text-lg md:text-xl font-semibold text-gray-700 mb-4"
-            | 未知の書籍と出会う切っ掛けとして、色んな本の引用を閲覧・紹介することができます！
-            br/
-            br/
-            | ぜひ、色んな引用をクリックして、お気に入りの本を見つけてみましょう📚🔍
+    - unless current_user
+      div class="p-6 mb-8"
+        p class="font-semibold text-gray-500 mb-4"
+          | 未知の書籍と出会うきっかけとして、色んな本の引用を閲覧・紹介することができます！
+          br/
+          br/
+          | ぜひ、色んな引用をクリックして、お気に入りの本を見つけてみましょう📚🔍
+      div class="text-center mb-4 -mt-10"
+        = link_to "新規登録", new_user_registration_path, class: "inline-block px-6 py-3 text-lg font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
 
-        a.twitter-share-button href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false" Tweet
-        script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"
+    br/
 
-        br/
+    div class="flex justify-center mb-4"
+      a.twitter-share-button href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false" Tweet
+      script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"
 
-        p.text-center
-          = link_to "現在、#{@all_books.length}個の書籍が登録されています。", books_path, class: "text-blue-400 hover:text-blue-800"
-        p.text-center
-          = link_to "現在、#{@all_quotes.length}個の引用が投稿されています。", quotes_path, class: "text-blue-400 hover:text-blue-800"
+    br/
 
-      div class="w-full md:w-2/3 md:pl-8 mt-8 md:mt-0"
-        h2 class="text-2xl font-semibold mb-2" 引用紹介
+    h2 class="text-2xl font-semibold mb-2" 引用紹介
+    div class="flex items-center space-x-2 mb-4"
+      = link_to 'ランダム表示', root_path(sort: 'random'), class: 'btn btn-sm btn-outline btn-rounded'
+      = link_to '人気順で表示', root_path(sort: 'popular'), class: 'btn btn-sm btn-outline btn-rounded'
 
-        = link_to 'ランダム表示', root_path(sort: 'random'), class: 'btn btn-sm btn-outline btn-rounded mr-2'
-        = link_to '人気順で表示', root_path(sort: 'popular'), class: 'btn btn-sm btn-outline btn-rounded'
+    #quotes
+      - if @message.present?
+        p = @message
+      - else
+        - @quotes.each_with_index do |quote, index|
+          div class="bg-white shadow-md rounded-lg p-4 mb-4"
+            == render quote
+            div class="mb-4"
+            - number_coquoted = quote.child_quotes.length + 1
+            - if current_user
+              - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
+              = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
+            - else
+              = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
+            p.text-center.mb-4
+              = link_to "この引用を表示する", coquote_users_quote_path(quote), class: 'btn btn-sm btn-outline btn-rounded'
 
-        #quotes
-          - if @message.present?
-            p = @message
-          - else
-            - @quotes.each_with_index do |quote, index|
-              div class="bg-white shadow-md rounded-lg p-4 mb-4"
-                == render quote
-                br/
-                br/
-                - number_coquoted = quote.child_quotes.length + 1
-                - if current_user
-                  - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
-                  = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
-                - else
-                  = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
-                p.text-center
-                  = link_to "この引用を表示する", quote, class: 'btn btn-sm btn-outline btn-rounded'
+    = paginate @quotes, class: 'mt-4'
 
-        = paginate @quotes, class: 'mt-4'
+    p.text-center.mb-4
+      = link_to "現在、#{@all_books.length}個の書籍が登録されています。", books_path, class: "text-blue-400 hover:text-blue-800"
 
-    div class="flex justify-center space-x-4 mt-8"
-      = link_to '利用規約', terms_of_service_path, class: 'text-sm text-gray-600 hover:underline'
-      = link_to 'プライバシーポリシー', privacy_policy_path, class: 'text-sm text-gray-600 hover:underline'
+    #quotescount
+
+  div class="flex justify-center space-x-4 mt-8"
+    = link_to '利用規約', terms_of_service_path, class: 'text-sm text-gray-600 hover:underline'
+    = link_to 'プライバシーポリシー', privacy_policy_path, class: 'text-sm text-gray-600 hover:underline'

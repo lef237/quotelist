@@ -69,11 +69,11 @@ const CoquoteButton = ({
         <div className="flex items-center space-x-2">
           <button
             onClick={coquoted ? handleUnCoquote : handleCoquote}
-            className={`btn ${
+            className={`btn py-0.5 px-2 text-sm ${
               coquoted ? "bg-gray-500 text-white" : "bg-gray-300 text-black"
             } transition duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-400 hover:text-white shadow-md`}
           >
-            {coquoted ? "UnCoquote" : "Coquote"}
+            {coquoted ? "共同引用を外す" : "共同引用する"}
           </button>
           <p className="mb-0 text-gray-800 text-lg font-semibold shadow-sm">
             {numCoquoted}

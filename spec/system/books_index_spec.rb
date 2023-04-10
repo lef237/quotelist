@@ -48,7 +48,7 @@ RSpec.describe 'Books index', type: :system do
       expect(page).to have_content('書籍一覧')
     end
 
-    it 'displays a list of books' do
+    it '少しFlakyなので注意：displays a list of books' do
       books[1..10].each do |book|
         expect(page).to have_content(book.title)
         expect(page).to have_content(book.author)

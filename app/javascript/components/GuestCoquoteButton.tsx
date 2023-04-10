@@ -7,7 +7,7 @@ type Props = {
 
 const GuestCoquoteButton = ({ quoteId, numberCoquoted }: Props) => {
   const handleClick = () => {
-    alert("ログインしてください");
+    alert("引用ボタンを押すには、ログインしてください");
   };
 
   console.log(numberCoquoted);
@@ -25,9 +25,9 @@ const GuestCoquoteButton = ({ quoteId, numberCoquoted }: Props) => {
       <div className="flex items-center space-x-2">
         <button
           onClick={handleClick}
-          className="btn bg-gray-500 text-white hover:bg-gray-600"
+          className="btn py-0.5 px-2 text-sm bg-gray-300 text-black hover:bg-gray-600"
         >
-          COQUOTE
+          共同引用する
         </button>
         <p className="mb-0 text-gray-600 text-lg font-semibold">
           {numberCoquoted}

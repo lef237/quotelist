@@ -6,17 +6,17 @@
 
     <div class="field">
       <%= f.label :name, '名前', class: 'block text-gray-700 font-semibold' %>
-      <%= f.text_field :name, autofocus: true, class: 'input input-bordered w-full' %>
+      <%= f.text_field :name, autofocus: true, class: 'bg-white border border-gray-300 w-full p-2' %>
     </div>
 
     <div class="field">
       <%= f.label :email, class: 'block text-gray-700 font-semibold' %>
-      <%= f.email_field :email, autocomplete: "email", class: 'input input-bordered w-full' %>
+      <%= f.email_field :email, autocomplete: "email", class: 'bg-white border border-gray-300 w-full p-2' %>
     </div>
 
     <div class="field">
       <%= f.label :profile_url, '外部リンク（任意）', class: 'block text-gray-700 font-semibold' %>
-      <%= f.text_field :profile_url, class: 'input input-bordered w-full' %>
+      <%= f.text_field :profile_url, class: 'bg-white border border-gray-300 w-full p-2' %>
     </div>
 
     <div class="field">
@@ -29,21 +29,21 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :password, '新しいパスワード', class: 'block text-gray-700 font-semibold' %> <i class="text-gray-600">(変更しない場合は空欄のままにしてください。)</i>
-      <%= f.password_field :password, autocomplete: "new-password", class: 'input input-bordered w-full mt-2' %>
+      <%= f.label :password, '新しいパスワード', class: 'block text-gray-700 font-semibold' %> <span class="text-gray-600">(変更しない場合は空欄のままにしてください。)</span>
+      <%= f.password_field :password, autocomplete: "new-password", class: 'bg-white border border-gray-300 w-full p-2' %>
       <% if @minimum_password_length %>
-        <em class="text-gray-600"><%= @minimum_password_length %> characters minimum</em>
+        <span class="text-gray-600"><%= @minimum_password_length %> 文字以上にしてください</span>
       <% end %>
     </div>
 
     <div class="field">
       <%= f.label :password_confirmation, '新規パスワード再入力', class: 'block text-gray-700 font-semibold' %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input input-bordered w-full mt-2' %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'bg-white border border-gray-300 w-full p-2' %>
     </div>
 
     <div class="field">
-      <%= f.label :current_password, '現在のパスワード', class: 'block text-gray-700 font-semibold' %> <i class="text-gray-600">(変更を反映させるには、現在のパスワードが必要です)</i>
-      <%= f.password_field :current_password, autocomplete: "current-password", class: 'input input-bordered w-full mt-2' %>
+      <%= f.label :current_password, '現在のパスワード', class: 'block text-gray-700 font-semibold' %> <span class="text-gray-600">(変更を反映させるには、現在のパスワードが必要です)</span>
+      <%= f.password_field :current_password, autocomplete: "current-password", class: 'bg-white border border-gray-300 w-full p-2' %>
     </div>
 
     <div class="actions">

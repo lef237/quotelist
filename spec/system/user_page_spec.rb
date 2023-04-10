@@ -12,8 +12,8 @@ RSpec.describe 'UserPage', type: :system do
     visit user_path(user)
   end
 
-  it 'displays the page title' do
-    expect(page).to have_content('ユーザーページ')
+  it 'displays the csv description' do
+    expect(page).to have_content('CSV')
   end
 
   it 'displays the user information' do
