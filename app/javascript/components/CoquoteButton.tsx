@@ -73,7 +73,7 @@ const CoquoteButton = ({
               coquoted ? "bg-gray-500 text-white" : "bg-gray-300 text-black"
             } transition duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-400 hover:text-white shadow-md`}
           >
-            {coquoted ? "共同引用を解除する" : "共同引用する"}
+            {coquoted ? "共同引用を外す" : "共同引用する"}
           </button>
           <p className="mb-0 text-gray-800 text-lg font-semibold shadow-sm">
             {numCoquoted}
