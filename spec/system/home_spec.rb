@@ -17,7 +17,7 @@ RSpec.describe 'Home', type: :system do
   end
 
   it 'displays the introduction text' do
-    expect(page).to have_content('未知の書籍と出会う切っ掛けとして、色んな本の引用を閲覧・紹介することができます！')
+    expect(page).to have_content('未知の書籍と出会うきっかけとして、色んな本の引用を閲覧・紹介することができます！')
     expect(page).to have_content('ぜひ、色んな引用をクリックして、お気に入りの本を見つけてみましょう📚🔍')
   end
 
