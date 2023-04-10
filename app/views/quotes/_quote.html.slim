@@ -1,7 +1,38 @@
 div id="#{dom_id quote}"
+  / p
+  /   = link_to book_path(quote.book) do
+  /     =< image_tag quote.book.avatar.variant(resize_to_limit: [700, 700]), class: "w-[100px] h-[100px] object-contain" if quote.book.avatar.attached?
 
-  p.font-serif.leading-relaxed.text-gray-600 style="font-size: 18px;"
-    = quote.sentence
+  / p.font-serif.leading-relaxed.text-gray-600 style="font-size: 18px;"
+  /   = quote.sentence
+  / div class="flex items-start"
+  /   div class="w-[100px] h-[100px] mr-4"
+  /     = link_to book_path(quote.book) do
+  /       =< image_tag quote.book.avatar.variant(resize_to_limit: [700, 700]), class: "w-full h-full object-contain" if quote.book.avatar.attached?
+  /   div class="flex-1"
+  /     p.font-serif.leading-relaxed.text-gray-600 style="font-size: 18px;"
+  /       = quote.sentence
+
+  / div class="flex flex-col md:flex-row items-start"
+  /   div class="w-full md:w-[100px] h-[100px] md:mr-4 mb-4 md:mb-0"
+  /     = link_to book_path(quote.book) do
+  /       =< image_tag quote.book.avatar.variant(resize_to_limit: [700, 700]), class: "w-full h-full object-contain" if quote.book.avatar.attached?
+  /   div class="flex-1"
+  /     p.font-serif.leading-relaxed.text-gray-600 style="font-size: 18px;"
+  /       = quote.sentence
+
+
+  div class="flex flex-col md:flex-row items-start"
+    - unless local_assigns[:hide_image]
+      div class="w-full md:w-[100px] h-[100px] md:mr-4 mb-4 md:mb-0"
+        = link_to book_path(quote.book) do
+          =< image_tag quote.book.avatar.variant(resize_to_limit: [700, 700]), class: "w-full h-full object-contain" if quote.book.avatar.attached?
+    div class="flex-1"
+      p.font-serif.leading-relaxed.text-gray-600 style="font-size: 18px;"
+        = quote.sentence
+
+
+
   br/
   p.font-serif.leading-snug.text-right.text-gray-600 style="font-size: 16px;"
     - if quote.page_number.present?
