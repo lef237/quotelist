@@ -12,6 +12,10 @@
       <%= f.password_field :password, autocomplete: "current-password", class: 'bg-white border border-gray-300 w-full p-2' %>
     </div>
 
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%= link_to "パスワードを忘れた場合", new_password_path(resource_name) %><br />
+    <% end %>
+
     <% if devise_mapping.rememberable? %>
       <div class="field flex items-center">
         <%= f.check_box :remember_me, class: 'mr-2' %>
