@@ -4,7 +4,7 @@ div id="#{dom_id quote}"
 
   p.text-2xl.font-serif.leading-relaxed
     = quote.sentence
-
+  br/
   p.text-xl.font-serif.leading-snug.text-right
     - if quote.page_number.present?
       = link_to "――――『#{quote.book.title}』（P. #{quote.page_number}）", book_path(quote.book), class: "text-blue-850 hover:text-blue-900"
