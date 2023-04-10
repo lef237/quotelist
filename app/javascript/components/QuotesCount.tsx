@@ -17,9 +17,9 @@ const QuotesCount = () => {
   console.log(data);
 
   return (
-    <div className="rounded-lg shadow-md text-center">
+    <div className="text-center">
       <p className="text-1xl font-semibold text-gray-700 mb-2">
-        Coquotesも含めた引用の総数
+        共同引用も含めた引用総数
       </p>
       <p className="text-2xl font-bold text-gray-800">{data.length} 個</p>
     </div>

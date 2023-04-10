@@ -7,6 +7,6 @@ div id="#{dom_id quote}"
   br/
   p.text-xl.font-serif.leading-snug.text-right
     - if quote.page_number.present?
-      = link_to "――――『#{quote.book.title}』（P. #{quote.page_number}）", book_path(quote.book), class: "text-blue-850 hover:text-blue-900"
+      = link_to "『#{quote.book.title}』（P. #{quote.page_number}）", book_path(quote.book), class: "text-blue-850 hover:text-blue-900"
     - else
-      = link_to "――――『#{quote.book.title}』", book_path(quote.book), class: "text-blue-850 hover:text-blue-900"
+      = link_to "『#{quote.book.title}』", book_path(quote.book), class: "text-blue-850 hover:text-blue-900"
