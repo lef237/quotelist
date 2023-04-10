@@ -25,7 +25,7 @@ const GuestCoquoteButton = ({ quoteId, numberCoquoted }: Props) => {
       <div className="flex items-center space-x-2">
         <button
           onClick={handleClick}
-          className="btn bg-gray-300 text-black hover:bg-gray-600"
+          className="btn py-0.5 px-2 text-sm bg-gray-300 text-black hover:bg-gray-600"
         >
           共同引用する
         </button>

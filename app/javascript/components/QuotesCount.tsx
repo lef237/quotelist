@@ -19,7 +19,7 @@ const QuotesCount = () => {
   return (
     <div className="text-center">
       <p className="text-1xl font-semibold text-gray-700 mb-2">
-        共同引用も含めた引用総数
+        現在の引用総数
       </p>
       <p className="text-2xl font-bold text-gray-800">{data.length} 個</p>
     </div>

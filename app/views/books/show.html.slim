@@ -6,16 +6,17 @@ div class="theme-cupcake container mx-auto px-4"
   div class="shadow-md rounded-lg p-6"
     div class="flex flex-col md:flex-row"
       div class="w-full md:w-1/3 mb-8 md:mb-0"
-        h1 class="text-3xl font-bold mb-6" 書籍ページ
+        h1 class="text-3xl font-bold mb-6" 『#{@book.title}』
         p
           = link_to @book.information_url do
             =< image_tag @book.avatar.variant(resize_to_limit: [700, 700]), class: "w-[283px] h-[400px] object-contain" if @book.avatar.attached?
         br/
 
-        p.text-4xl.font-serif
-          = "『#{@book.title}』"
+        / p.text-4xl.font-serif
+        /   = "『#{@book.title}』"
         p.text-2xl
           = "著者：#{@book.author}"
+        br/
         p.text-base
           - if @book.information_url.present?
             = link_to "書籍情報ページ", @book.information_url, class: "text-base underline"
@@ -32,6 +33,8 @@ div class="theme-cupcake container mx-auto px-4"
         div class="mt-4"
           = link_to '新しい引用を追加する', new_book_quote_path(@book), class: 'bg-green-900 text-white font-semibold px-7 py-3 rounded hover:bg-gray-700'
         br/
+        a.twitter-share-button href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false" Tweet
+        script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"
         br/
         p
           strong CSV:
@@ -45,8 +48,8 @@ div class="theme-cupcake container mx-auto px-4"
         div class="mt-4"
           = link_to "書籍一覧", books_path, class: 'bg-gray-400 text-white font-semibold px-4 py-2 rounded hover:bg-gray-500'
 
-      div class="w-full md:w-2/3 md:pl-8"
-        h2 class="text-3xl font-bold mt-8 mb-4" 引用一覧
+      div class="w-full md:w-2/3"
+        h2 class="text-2xl font-bold mb-4" 引用一覧
 
         div class="mt-4"
           = link_to 'ランダム表示', book_path(sort: 'random'), class: 'btn btn-sm btn-outline btn-rounded mr-2'
@@ -68,5 +71,5 @@ div class="theme-cupcake container mx-auto px-4"
                 - else
                   = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
                 p.text-center
-                  = link_to "この引用を表示する", quote, class: 'btn btn-sm btn-outline btn-rounded'
+                  = link_to "この引用を表示する", coquote_users_quote_path(quote), class: 'btn btn-sm btn-outline btn-rounded'
             = paginate @quotes, class: 'mt-4'
