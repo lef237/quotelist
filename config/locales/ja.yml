@@ -12,3 +12,5 @@ ja:
               too_short: "は６文字以上で入力してください"
             password_confirmation:
               confirmation: "が一致しません"
+            current_password:
+              blank: "を入力してください"
