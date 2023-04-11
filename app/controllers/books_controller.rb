@@ -53,7 +53,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to book_url(@book), notice: 'Book was successfully created.' }
+        format.html { redirect_to book_url(@book), notice: '本が作成されました' }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -67,7 +67,7 @@ class BooksController < ApplicationController
     @book.avatar.attach(book_params[:avatar]) if book_params[:avatar].present?
     respond_to do |format|
       if @book.update(book_params)
-        format.html { redirect_to book_url(@book), notice: 'Book was successfully updated.' }
+        format.html { redirect_to book_url(@book), notice: '本が更新されました' }
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -80,11 +80,11 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
+      format.html { redirect_to books_url, notice: '本が削除されました' }
       format.json { head :no_content }
     end
   rescue ActiveRecord::DeleteRestrictionError
-    flash[:notice] = 'この書籍には既に引用がありますので削除することは出来ません。'
+    flash[:notice] = 'この書籍には既に引用がありますので削除することはできません'
     redirect_to books_url
   end
 
@@ -103,7 +103,7 @@ class BooksController < ApplicationController
   def require_login
     return if current_user
 
-    redirect_to root_path, alert: 'You are not authorized to edit this book.'
+    redirect_to root_path, alert: 'この本を編集する権限がありません'
   end
 
   def quotes_to_csv(quotes)

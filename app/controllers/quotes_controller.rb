@@ -23,7 +23,6 @@ class QuotesController < ApplicationController
 
   # POST /quotes or /quotes.json
   def create
-    # ここで新たなquoteのIDを作り出している
     @quote = Quote.new(quote_params)
     @quote.user_id = current_user.id
 
@@ -55,11 +54,11 @@ class QuotesController < ApplicationController
   def destroy
     @quote.destroy
     respond_to do |format|
-      format.html { redirect_to book_url(@quote.book_id), notice: 'Quote was successfully destroyed.' }
+      format.html { redirect_to book_url(@quote.book_id), notice: '引用が削除されました' }
       format.json { head :no_content }
     end
   rescue ActiveRecord::DeleteRestrictionError
-    flash[:notice] = 'この引用はCoquoteされていますので削除することは出来ません。'
+    flash[:notice] = 'この文章は共同引用されていますので削除することはできません'
     redirect_to book_url(@quote.book_id)
   end
 
@@ -83,6 +82,6 @@ class QuotesController < ApplicationController
   def verify_quote_edit_privileges
     return unless @quote.user != current_user
 
-    redirect_to root_path, alert: 'You are not authorized to edit this quote.'
+    redirect_to root_path, alert: 'この引用を編集する権限がありません'
   end
 end
