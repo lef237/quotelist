@@ -8,3 +8,5 @@ ja:
               blank: "を入力してください"
             password:
               blank: "を入力してください"
+            password_confirmation:
+              confirmation: "が一致しません"
