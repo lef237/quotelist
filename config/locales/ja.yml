@@ -6,7 +6,9 @@ ja:
           attributes:
             email:
               blank: "を入力してください"
+              taken: "はすでに使用されています"
             password:
               blank: "を入力してください"
+              too_short: "は６文字以上で入力してください"
             password_confirmation:
               confirmation: "が一致しません"
