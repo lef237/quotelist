@@ -7,6 +7,7 @@ primary_region = "nrt"
 processes = []
 
 [env]
+  RAILS_STORAGE = "/mnt/volume/storage"
 
 [experimental]
   auto_rollback = true
@@ -40,3 +41,7 @@ processes = []
 [[statics]]
   guest_path = "/rails/public"
   url_prefix = "/"
+
+[mounts]
+  source = "storage_volume"
+  destination = "/mnt/volume"
