@@ -2,7 +2,8 @@ header class="bg-white shadow-md px-4 py-2 relative w-full z-10"
   div class="container mx-auto"
     div class="flex justify-between items-center"
       = link_to root_path, class: "text-xl font-semibold text-gray-700 hover:text-gray-900" do
-        = image_tag 'logo-yoko.png', alt: '引用箱', class: 'h-8 w-auto'
+        = image_tag 'logo-yoko.png', alt: '引用箱', class: 'h-8 w-auto hidden md:block'
+        = image_tag 'logo.png', alt: '引用箱', class: 'h-8 w-auto block md:hidden'
         h1 class="sr-only"
           | 引用箱
       div class="hidden md:flex items-center"
