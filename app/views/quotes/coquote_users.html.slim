@@ -10,7 +10,7 @@
     script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"
   div.text-center.py-6
     = link_to '戻る', :back, class: "bg-gray-600 text-white font-semibold px-4 py-2 rounded hover:bg-gray-700 mr-4"
-    = link_to "書籍ページへ", book_path(params[:id] = @quote.book_id), class: "bg-gray-600 text-white font-semibold px-4 py-2 rounded hover:bg-gray-700"
+    = link_to "編集する", edit_quote_path(@quote), class: "bg-gray-600 text-white font-semibold px-4 py-2 rounded hover:bg-gray-700" if current_user && @quote.user_id == current_user.id
   h2.text-2xl.font-semibold.text-center.py-6
     | 引用したユーザーの一覧
   div.flex.justify-center

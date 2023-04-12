@@ -13,6 +13,7 @@ RSpec.describe 'CoquoteUsers', type: :system do
       create(:quote, user: coquote_user, book:, source_quote: quote)
     end
     driven_by(:rack_test)
+    login_as(user)
     visit coquote_users_quote_path(quote)
   end
 
