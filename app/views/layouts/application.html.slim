@@ -10,11 +10,13 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
-  body data-controller="reload"
+
     - ogp_tags.each do |property, content|
       meta property=property content=content
     - twitter_card_tags.each do |name, content|
       meta name=name content=content
+
+  body data-controller="reload"
     == render "layouts/header"
     p style="color: green"
       = notice
