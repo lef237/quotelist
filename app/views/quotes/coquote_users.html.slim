@@ -1,4 +1,4 @@
-- content_for :title, "『引用箱』で引用されました！"
+- content_for :title, "『#{@quote.book.title}』の引用が投稿されました！ | 引用箱 QuoteList"
 - content_for :description, @quote.sentence
 
 .container.mx-auto.px-4
