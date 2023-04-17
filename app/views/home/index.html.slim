@@ -42,7 +42,8 @@ div class="theme-cupcake container mx-auto px-4 max-w-3xl"
             p.text-center.mb-4
               = link_to "この引用を表示する", coquote_users_quote_path(quote), class: 'btn btn-sm btn-outline btn-rounded'
 
-    = paginate @quotes, class: 'mt-4'
+    .text-center.mt-8.mb-6.text-xl
+      = paginate @quotes
 
     p.text-center.mb-4
       = link_to "現在、#{@all_books.length}個の書籍が登録されています。", books_path, class: "text-blue-400 hover:text-blue-800"

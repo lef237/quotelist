@@ -24,4 +24,5 @@ body class="text-gray-800 font-sans"
           p.text-center
             = link_to "この引用を表示する", quote, class: 'btn btn-sm btn-outline btn-rounded'
           br
-    = paginate @quotes, class: "mt-6"
+    .text-center.mt-8.mb-6.text-xl
+      = paginate @quotes
