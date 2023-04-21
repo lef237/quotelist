@@ -2,10 +2,18 @@
 ## サービスURL
 [引用箱 QuoteList](https://quotelist.fly.dev/)
 
+https://quotelist.fly.dev/
+
 ## サービス概要
 『引用箱（いんようばこ）』というサービスは、「未知の書籍と出会うきっかけとして、既読した人による書籍の引用から、気になる書籍を探したいが、引用が集まっている場所がない」という問題を解決してくれる、読書が好きな人向けの引用共有サービスです。
 
 ユーザーは書籍の引用を記録することができ、Kindleの共有機能とは違って、自分以外の人の引用記録も見ることができる点が特徴です。
+
+リリースブログはこちらになります。
+- https://lef237.hatenablog.com/entry/2023/04/16/112002
+
+また、このサービスは、文化庁のこちらの規約を守って引用しております。
+- https://www.bunka.go.jp/seisaku/chosakuken/seidokaisetsu/gaiyo/chosakubutsu_jiyu.html
 
 ## 実際の画面
 ![thumbnail](https://user-images.githubusercontent.com/93074851/232259787-43616406-a68c-474f-9391-820eb01b2685.png)
