@@ -34,6 +34,18 @@ RSpec.describe 'Quote Edit', type: :system do
       expect(page).to have_content('まだ引用はありません')
       expect(page).not_to have_content('これはテストの引用文です。')
     end
+
+    # 0文字の投稿を禁じる
+    it 'does not create a quote with 0 characters' do
+      add_quote('', 42)
+      expect(page).to have_content('引用文は1文字以上で入力してください')
+    end
+
+    # 301文字の投稿を禁じる
+    it 'does not create a quote with 301 characters' do
+      add_quote('a' * 301, 42)
+      expect(page).to have_content('引用文は300文字以内で入力してください')
+    end
   end
 
   private

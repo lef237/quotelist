@@ -14,3 +14,8 @@ ja:
               confirmation: "が一致しません"
             current_password:
               blank: "を入力してください"
+        quote:
+          attributes:
+            sentence:
+              too_short: "文が短すぎます。引用文は%{count}文字以上で入力してください。"
+              too_long: "文が長すぎます。引用文は%{count}文字以内で入力してください。"
