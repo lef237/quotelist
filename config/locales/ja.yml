@@ -17,5 +17,5 @@ ja:
         quote:
           attributes:
             sentence:
-              too_short: "文が短すぎます。最低限の長さは%{count}文字です。"
-              too_long: "文が長すぎます。最大の長さは%{count}文字です。"
+              too_short: "文が短すぎます。引用文は%{count}文字以上で入力してください。"
+              too_long: "文が長すぎます。引用文は%{count}文字以内で入力してください。"
