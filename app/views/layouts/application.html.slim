@@ -17,7 +17,7 @@ html
     - twitter_card_tags.each do |name, content|
       meta name=name content=content
 
-  body data-controller="reload"
+  body
     == render "layouts/header"
     p style="color: green"
       = notice
