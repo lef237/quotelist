@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'privacy_policy', to: 'top#privacy_policy'
   devise_for :users
   root 'home#index'
+  get '/admin', to: 'admin#new'
+  post '/admin', to: 'admin#create'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

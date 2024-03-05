@@ -108,6 +108,7 @@ GEM
     diff-lcs (1.5.0)
     dockerfile-rails (1.2.5)
       rails
+    dotenv (3.1.0)
     erb_lint (0.3.1)
       activesupport
       better_html (>= 2.0.1)
@@ -345,6 +346,7 @@ DEPENDENCIES
   debug
   devise
   dockerfile-rails (>= 1.2)
+  dotenv
   erb_lint
   factory_bot_rails
   faker

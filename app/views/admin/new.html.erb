@@ -1,0 +1,12 @@
+<h1>Become an Admin</h1>
+
+<%= form_with url: '/admin', method: :post do |form| %>
+  <div class="field">
+    <%= form.label :admin_password %>
+    <%= form.password_field :admin_password %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit" %>
+  </div>
+<% end %>
