@@ -13,7 +13,7 @@ h1.text-3xl.font-bold.text-gray-700.mb-8.text-center 引用ページ
 
     br/
 
-    - if @quote.user == current_user || current_user.admin?
+    - if current_user && (@quote.user == current_user || current_user.admin?)
       div.flex.items-center.justify-center.space-x-4
         = link_to "編集する", edit_quote_path(@quote), class: "bg-gray-600 text-white font-semibold text-sm px-3 py-1 rounded hover:bg-gray-700"
         = button_to "削除する", @quote, method: :delete, form: { data: { turbo: true, turbo_confirm: "削除してよろしいですか？" }, class: "bg-gray-600 text-white font-semibold text-sm px-3 py-1 rounded hover:bg-gray-700" }
