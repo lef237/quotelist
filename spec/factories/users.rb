@@ -7,5 +7,6 @@ FactoryBot.define do
     password_confirmation { 'password123' }
     name { Faker::Name.name }
     profile_url { Faker::Internet.url }
+    admin { false }
   end
 end
