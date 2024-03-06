@@ -1,0 +1,9 @@
+h1 Become an Admin
+
+= form_with url: '/admin', method: :post do |form|
+  .field
+    = form.label :admin_password
+    = form.password_field :admin_password
+
+  .actions
+    = form.submit "Submit"

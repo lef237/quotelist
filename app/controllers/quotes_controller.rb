@@ -81,6 +81,7 @@ class QuotesController < ApplicationController
 
   def verify_quote_edit_privileges
     return unless @quote.user != current_user
+    return if current_user.admin?
 
     redirect_to root_path, alert: '自分の引用のみ編集できます'
   end
