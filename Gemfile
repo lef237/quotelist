@@ -79,7 +79,7 @@ group :development do
   # gem "spring"
 
   gem 'erb_lint', require: false
-  gem 'html2slim'
+  gem 'html2slim', github: 'slim-template/html2slim'
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
