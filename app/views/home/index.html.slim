@@ -36,9 +36,9 @@ div class="theme-cupcake container mx-auto px-4 max-w-3xl"
             - number_coquoted = quote.child_quotes.length + 1
             - if current_user
               - already_coquoted = current_user.quotes.find_by(source_quote_id: quote.id).present?
-              = content_tag :div, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
+              = content_tag :div, nil, id: "coquotebutton#{index}", data: { quoteId: quote.id, isCoquoted: already_coquoted, numberCoquoted: number_coquoted }.to_json, class: 'mt-2'
             - else
-              = content_tag :div, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json, class: 'mt-2' do
+              = content_tag :div, nil, id: "guestcoquotebutton#{index}", data: { quoteId: quote.id, numberCoquoted: number_coquoted }.to_json, class: 'mt-2'
             p.text-center.mb-4
               = link_to "この引用を表示する", coquote_users_quote_path(quote), class: 'btn btn-sm btn-outline btn-rounded'
 

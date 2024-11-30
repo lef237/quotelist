@@ -16,6 +16,6 @@ header class="bg-white shadow-md px-4 py-2 relative w-full z-10"
           = f.text_field :keyword, placeholder: '著者名 or 書籍名', class: 'input input-xs input-bordered'
           = f.submit "検索", class: "btn btn-xs bg-gray-700 hover:bg-gray-800 text-white ml-2"
         - if current_user
-          = content_tag :div, id: "headerbutton", data: { isLogin: true, userId: current_user.id }.to_json, class: "mr-2" do
+          = content_tag :div, nil, id: "headerbutton", data: { isLogin: true, userId: current_user.id }.to_json, class: "mr-2"
         - else
-          = content_tag :div, id: "headerbutton", data: { isLogin: false, userId: nil }.to_json, class: "mr-2" do
+          = content_tag :div, nil, id: "headerbutton", data: { isLogin: false, userId: nil }.to_json, class: "mr-2"
