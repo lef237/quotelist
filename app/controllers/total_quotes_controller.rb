@@ -2,8 +2,8 @@
 
 class TotalQuotesController < ApplicationController
   def index
-    @quotes = Quote.all
+    count = Quote.count
     # 対応するviewファイルがないので、明示的にrenderを書いてあげる必要がある。
-    render json: @quotes
+    render json: { count: }
   end
 end

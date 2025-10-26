@@ -2,14 +2,12 @@ import React from "react";
 import useSWR from "swr";
 import fetcher from "../fetcher";
 
-interface Quote {
-  id: number;
-  page_number: number;
-  sentence: string;
+interface QuotesCountResponse {
+  count: number;
 }
 
 const QuotesCount = () => {
-  const { data, error } = useSWR<Quote[]>(`/total_quotes`, fetcher);
+  const { data, error } = useSWR<QuotesCountResponse>(`/total_quotes`, fetcher);
 
   if (error) return <div>Failed to load data</div>;
   if (!data) return <div>Loading...</div>;
@@ -21,7 +19,7 @@ const QuotesCount = () => {
       <p className="text-1xl font-semibold text-gray-700 mb-2">
         現在の引用総数
       </p>
-      <p className="text-2xl font-bold text-gray-800">{data.length} 個</p>
+      <p className="text-2xl font-bold text-gray-800">{data.count} 個</p>
     </div>
   );
 };

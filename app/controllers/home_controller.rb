@@ -2,8 +2,8 @@
 
 class HomeController < ApplicationController
   def index
-    @all_quotes = Quote.all
-    @all_books = Book.all
+    @all_quotes_count = Quote.count
+    @all_books_count = Book.count
     sort = params[:sort]
     @quotes = if sort == 'random'
                 Quote.where(source_quote_id: nil).order('RANDOM()').page(params[:page])
