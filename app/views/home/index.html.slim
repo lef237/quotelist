@@ -46,7 +46,7 @@ div class="theme-cupcake container mx-auto px-4 max-w-3xl"
       = paginate @quotes
 
     p.text-center.mb-4
-      = link_to "現在、#{@all_books.length}個の書籍が登録されています。", books_path, class: "text-blue-400 hover:text-blue-800"
+      = link_to "現在、#{@all_books_count}個の書籍が登録されています。", books_path, class: "text-blue-400 hover:text-blue-800"
 
     #quotescount
 

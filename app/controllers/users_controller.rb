@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     CSV.generate(headers: true) do |csv|
       csv << %w[書籍名 著者名 引用文 引用ページ]
 
-      quotes.each do |quote|
+      quotes.includes(:book).find_each do |quote|
         csv << [quote.book.title, quote.book.author, quote.sentence, quote.page_number]
       end
     end

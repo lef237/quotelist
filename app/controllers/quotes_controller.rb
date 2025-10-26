@@ -64,7 +64,7 @@ class QuotesController < ApplicationController
 
   def coquote_users
     @quote = Quote.find(params[:id])
-    @coquote_users = @quote.child_quotes.map(&:user)
+    @coquote_users = @quote.child_quotes.includes(:user).map(&:user)
   end
 
   private
